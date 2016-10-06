@@ -1,12 +1,19 @@
 <resources>
 
     <!-- Base application theme. -->
-    <style name="AppTheme" parent="android:Theme.Material">
+    <style name="Intro" parent="android:Theme.Material.Light.NoActionBar.Fullscreen">
         <!-- Customize your theme here. -->
-        <item name="android.colorPrimary">@color/colorPrimary</item>
-        <item name="android.colorPrimaryDark">@color/colorPrimaryDark</item>
-        <item name="android.colorAccent">@color/colorAccent</item>
+        <item name="android:navigationBarColor">@color/android.preto</item>
+        <item name="android:windowBackground">@color/android.corPrimaria</item>
 
+    </style>
+
+    <style name="TemaTel" parent="android:Theme.Material.Light.NoActionBar">
+
+        <item name="android:colorPrimaryDark">@color/android.corPrimariaDark</item>
+        <item name="android:colorAccent">@color/android.corAcentuada</item>
+        <item name="android:background">@color/android.colorPrimary</item>
+        <item name="android:navigationBarColor">@color/android.preto</item>
     </style>
 
 </resources>

@@ -1,3 +1,22 @@
 <resources>
     <string name="app_name">Tel</string>
+    <string name="TextoIntro1">
+           Compartilhe e explore
+        conhecimentos técnicos com a
+        comunidade de telecomunicações.
+
+    </string>
+    <string name="TextoIntro2">
+        Através de publicações de
+        soluções técnicas.
+
+    </string>
+
+    <string name="TextoIntro3">
+        Fique conhecido, quanto
+        mais publicações fizer
+        mais chance terá de ficar popular
+        na comunidade de telecomunicações.
+
+    </string>
 </resources>

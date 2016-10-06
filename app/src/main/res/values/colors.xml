@@ -3,4 +3,14 @@
     <color name="android.colorPrimary">#3F51B5</color>
     <color name="android.colorPrimaryDark">#303F9F</color>
     <color name="android.colorAccent">#FF4081</color>
+
+    <!-- Cores do tema Tel -->
+    <color name="android.corPrimaria">#3F51B5</color>
+    <color name="android.corPrimariaDark">#303F9F</color>
+    <color name="android.corCinzaClaro">#C5CAE9</color>
+    <color name="android.corAcentuada">#FF5252</color>
+    <color name="android.preto">#212121</color>
+    <color name="android.cinzaEscuro">#757575</color>
+    <color name="android.branco">#FFFFFF</color>
+    <color name="android.cinzaMeioTermo">#BDBDBD</color>
 </resources>
