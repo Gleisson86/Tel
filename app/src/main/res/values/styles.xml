@@ -1,19 +1,61 @@
 <resources>
 
     <!-- Base application theme. -->
-    <style name="Intro" parent="android:Theme.Material.Light.NoActionBar.Fullscreen">
+
+    <style name="Intro" parent="Theme.AppCompat.Light">
         <!-- Customize your theme here. -->
+
+        <item name="android:statusBarColor">@color/android.preto</item>
         <item name="android:navigationBarColor">@color/android.preto</item>
         <item name="android:windowBackground">@color/android.corPrimaria</item>
 
     </style>
 
-    <style name="TemaTel" parent="android:Theme.Material.Light.NoActionBar">
-
-        <item name="android:colorPrimaryDark">@color/android.corPrimariaDark</item>
-        <item name="android:colorAccent">@color/android.corAcentuada</item>
-        <item name="android:background">@color/android.colorPrimary</item>
+    <style name="Intro.NoActionBar" parent="Theme.AppCompat.Light.NoActionBar">
+        <!-- Customize your theme here. -->
+        <item name="android:statusBarColor">@color/android.preto</item>
         <item name="android:navigationBarColor">@color/android.preto</item>
+        <item name="android:windowBackground">@color/android.corPrimaria</item>
+
     </style>
+
+
+    <style name="Intro.Fullscreen">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+        <item name="android:windowFullscreen">true</item>
+    </style>
+
+        <!-- Botão logar  -->
+    <style name="Botao.matchParentAzul" parent="Widget.AppCompat.Button">
+
+        <item name="android:background">@color/android.corPrimariaDark</item>
+        <item name="android:colorButtonNormal">@color/android.preto</item>
+        <item name="android:colorControlHighlight">@color/android.corAcentuada</item>
+        <item name="android:textColor">@color/android.branco</item>
+        <item name="android:shadowColor">@color/android.cinzaEscuro</item>
+
+    </style>
+
+    <style name="Botao.matchParentCinza" parent="Widget.AppCompat.Button">
+
+        <item name="android:background">@color/android.cinzaEscuro</item>
+        <item name="android:colorButtonNormal">@color/android.preto</item>
+        <item name="android:colorControlHighlight">@color/android.corAcentuada</item>
+        <item name="android:textColor">@color/android.branco</item>
+        <item name="android:shadowColor">@color/android.cinzaEscuro</item>
+
+    </style>
+
+    <style name="TextLabel" parent="TextAppearance.AppCompat">
+        <!-- Hint color and label color in FALSE state -->
+        <item name="android:textColorHint">@color/android.branco</item>
+        <item name="android:textSize">20sp</item>
+        <!-- Label color in TRUE state and bar color FALSE and TRUE State -->
+        <item name="colorAccent">@color/android.corAcentuada</item>
+        <item name="colorControlNormal">@color/android.preto</item>
+        <item name="colorControlActivated">@color/android.corPrimaria</item>
+    </style>
+
 
 </resources>

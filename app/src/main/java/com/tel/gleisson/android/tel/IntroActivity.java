@@ -15,7 +15,6 @@ import com.github.paolorotolo.appintro.AppIntro;
 
 public class IntroActivity extends AppIntro {
 
-
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -27,8 +26,6 @@ public class IntroActivity extends AppIntro {
         setFlowAnimation();
 
     }
-
-
         @Override
 
         public void onSkipPressed(Fragment currentFragment ){

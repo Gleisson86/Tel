@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "363581542310",
+    "firebase_url": "https://apptel-84297.firebaseio.com",
+    "project_id": "apptel-84297",
+    "storage_bucket": "apptel-84297.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:363581542310:android:396bff15800a2c72",
+        "android_client_info": {
+          "package_name": "com.tel.gleisson.android.tel"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "363581542310-vhfli1hv422f1v34rt2dh4heqru5nrat.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBMcN4936GNRKBX242xGpbgbxhkfccRTNo"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

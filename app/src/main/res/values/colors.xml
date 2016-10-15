@@ -1,9 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="android.colorPrimary">#3F51B5</color>
-    <color name="android.colorPrimaryDark">#303F9F</color>
-    <color name="android.colorAccent">#FF4081</color>
-
     <!-- Cores do tema Tel -->
     <color name="android.corPrimaria">#3F51B5</color>
     <color name="android.corPrimariaDark">#303F9F</color>
