@@ -26,7 +26,7 @@
         <item name="android:windowFullscreen">true</item>
     </style>
 
-        <!-- Botão logar  -->
+    <!-- Botão logar  -->
     <style name="Botao.matchParentAzul" parent="Widget.AppCompat.Button">
 
         <item name="android:background">@color/android.corPrimariaDark</item>
@@ -50,12 +50,17 @@
     <style name="TextLabel" parent="TextAppearance.AppCompat">
         <!-- Hint color and label color in FALSE state -->
         <item name="android:textColorHint">@color/android.branco</item>
+        <item name="android:textColor">@color/android.branco</item>
         <item name="android:textSize">20sp</item>
         <!-- Label color in TRUE state and bar color FALSE and TRUE State -->
         <item name="colorAccent">@color/android.corAcentuada</item>
         <item name="colorControlNormal">@color/android.preto</item>
         <item name="colorControlActivated">@color/android.corPrimaria</item>
     </style>
+
+    <style name="Intro.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar"/>
+
+    <style name="Intro.PopupOverlay" parent="ThemeOverlay.AppCompat.Light"/>
 
 
 </resources>

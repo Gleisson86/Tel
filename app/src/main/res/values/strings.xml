@@ -12,6 +12,11 @@
 
     </string>
 
+    <string name="loading">
+
+        Aguarde
+    </string>
+
     <string name="TextoIntro3">
         Fique conhecido, quanto
         mais publicações fizer
@@ -19,13 +24,12 @@
         na comunidade de telecomunicações.
 
     </string>
-    <string name="title_activity_login">login</string>
 
     <!-- Strings related to login -->
     <string name="prompt_email">Email</string>
     <string name="prompt_password">Password (optional)</string>
     <string name="action_sign_in">Sign in or register</string>
-    <string name="action_sign_in_short">Sign in</string>
+
     <string name="error_invalid_email">This email address is invalid</string>
     <string name="error_invalid_password">This password is too short</string>
     <string name="error_incorrect_password">This password is incorrect</string>
@@ -33,4 +37,40 @@
     <string name="permission_rationale">"Contacts permissions are needed for providing email
         completions."
     </string>
+
+
+    <string name="action_sign_in_short">Register</string>
+    <string name="email">Email</string>
+    <string name="minimum_password">Senha muito curta, entre no minimo com 6 caracteres!</string>
+    <string name="auth_failed">Falha na autendicação, checa endereço de email e senha</string>
+    <string name="change_email">Mudar Email</string>
+    <string name="change_password">Mudar Senbha</string>
+    <string name="send_password_reset_email">Send Password reset email</string>
+    <string name="remove_user">Remover Usuário</string>
+    <string name="new_pass">Nova Senha</string>
+    <string name="title_activity_profile">Firebase</string>
+    <string name="title_activity_login">Login</string>
+    <string name="hint_email">Email</string>
+    <string name="hint_password">Senha</string>
+    <string name="hint_name">Nome Completo</string>
+    <string name="btn_login">LOGIN</string>
+    <string name="btn_link_to_register">Not a member? Get registered in Firebase now!</string>
+    <string name="btn_link_to_login">Already registered. Login Me!</string>
+    <string name="title_activity_reset_password">ResetPasswordActivity</string>
+    <string name="btn_forgot_password">Esqueceu sua senha?</string>
+    <string name="btn_reset_password">Reset de senha</string>
+    <string name="btn_back"><![CDATA[<< Back]]></string>
+    <string name="hint_new_email">New Email</string>
+    <string name="btn_change">Change</string>
+    <string name="btn_send">Send</string>
+    <string name="btn_remove">Remove</string>
+    <string name="btn_sign_out">Sign Out</string>
+    <string name="lbl_forgot_password">Forgot password?</string>
+    <string name="EmailEnviado_resetSenha">Enviamos um email com as instruções para o reset de sua senha!</string>
+    <string name="title_activity_signup">SignupActivity</string>
+    <string name="enviar_email_de_resetSenha" > Falha ao tentar enviar email de reset de senha! Check o email inserido!</string>
+    <string name="email_registro_de_conta">Entre com o email que registrou sua conta!</string>
+    <string name="esqueceu_senha_msg">Nós só precisamos do seu e-mail cadastrado para enviar-lhe instruções de redefinição de senha </string>
+
+
 </resources>

@@ -31,19 +31,24 @@ public class CriarContaActivity extends AppCompatActivity implements View.OnClic
 
 
     //defining firebaseauth object
+    private FirebaseAuth firebaseAuth;
 
 
+
+    // Método onCreate
+    //-----------------------------------------------------------------
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.criar_conta);
 
-        chamaIntro();
+      //  chamaIntro();
 
+        firebaseAuth = FirebaseAuth.getInstance();
 
         //initializing views
-        editTextEmail = (EditText) findViewById(R.id.editTextEmail);
-        editTextPassword = (EditText) findViewById(R.id.editTextPassword);
+        editTextEmail = (EditText) findViewById (R.id.editTextEmailCriarConta);
+        editTextPassword = (EditText) findViewById (R.id.editTextSenhaCriarConta);
 
         buttonSignup = (Button) findViewById(R.id.buttonSignup);
 
@@ -53,13 +58,20 @@ public class CriarContaActivity extends AppCompatActivity implements View.OnClic
         buttonSignup.setOnClickListener(this);
     }
 
+
+    //--Chama Introdução
+    //-------------------------------------------------------------------------
     private void chamaIntro(){
         Intent intent = new Intent(this, IntroActivity.class);
         this.startActivity(intent);
     }
 
 
-    private void registerUser(FirebaseAuth firebaseAuth  ){
+
+    // Metodo para criar uma conta baseada em Email e Senha
+    //------------------------------------------------------
+
+    private void registerUser(){
 
         //getting email and password from edit texts
         String email = editTextEmail.getText().toString().trim();
@@ -87,9 +99,11 @@ public class CriarContaActivity extends AppCompatActivity implements View.OnClic
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
                 //checking if success
+
                 if(task.isSuccessful()){
                     //display some message here
                     Toast.makeText(CriarContaActivity.this,"Successfully registered",Toast.LENGTH_LONG).show();
+                    startActivity( new Intent(CriarContaActivity.this, IntroActivity.class));
                    finish();
                 }else{
                     //display some message here
@@ -102,10 +116,15 @@ public class CriarContaActivity extends AppCompatActivity implements View.OnClic
 
     }
 
+
+
+    // Método que chama o Criar Nova Conta assim que o usuário
+    //clica no botão Criar
+    //----------------------------------------------------------------
+
     @Override
     public void onClick(View view) {
         //calling register method on click
-
-    //    registerUser(MainActivity.);
+     registerUser();
     }
 }

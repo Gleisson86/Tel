@@ -19,7 +19,7 @@
         android:layout_alignParentStart="true">
 
         <EditText
-            android:id="@+id/editTextEmail"
+            android:id="@+id/editTextEmailCriarConta"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="15dp"
@@ -27,7 +27,7 @@
             android:inputType="textEmailAddress" />
 
         <EditText
-            android:id="@+id/editTextPassword"
+            android:id="@+id/editTextSenhaCriarConta"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="15dp"

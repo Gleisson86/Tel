@@ -3,7 +3,7 @@
 <LinearLayout
 
     xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:layout_marginLeft="16dp"
@@ -11,7 +11,7 @@
     android:orientation="vertical">
 
     <TextView
-        android:id="@+id/textView2"
+        android:id="@+id/TelTextView"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_gravity="center_horizontal"
@@ -31,7 +31,8 @@
         android:layout_weight="4.2"
         android:orientation="vertical"
         android:paddingLeft="16dp"
-        android:paddingRight="16dp">
+        android:paddingRight="16dp"
+        android:weightSum="1">
 
 
         <!-- Email Label -->
@@ -43,7 +44,6 @@
             android:layout_marginTop="2dp">
 
             <EditText
-
                 android:id="@+id/input_email"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -61,7 +61,7 @@
             android:layout_marginTop="2dp">
 
             <EditText
-                android:id="@+id/input_password"
+                android:id="@+id/input_senha"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="Senha"
@@ -71,32 +71,37 @@
 
         <android.support.v7.widget.AppCompatButton
 
-            android:id="@+id/btn_login"
+            android:id="@+id/entrar_login"
             style="@style/Botao.matchParentAzul"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="2dp"
             android:gravity="center"
-            android:text="Entrar"/>
+            android:text="Entrar"
+            android:onClick="onClick">
+
+        </android.support.v7.widget.AppCompatButton>
 
 
-        <TextView
-            android:id="@+id/link_signup"
+        <android.support.v7.widget.AppCompatButton
+            android:id="@+id/esqueceu_senha"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="4dp"
-            android:layout_marginTop="4dp"
+            android:layout_marginTop="8dp"
             android:gravity="center"
             android:text="Esqueceu a senha?"
+            android:textAllCaps="false"
+            android:background="@null"
             android:textColor="@color/android.branco"
-            android:textSize="16sp"/>
+            android:textSize="16sp" >
+    </android.support.v7.widget.AppCompatButton>
 
 
     </LinearLayout>
 
 
     <LinearLayout
-
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1"
@@ -106,12 +111,13 @@
 
         <android.support.v7.widget.AppCompatButton
 
-            android:id="@+id/btn_criarConta"
+            android:id="@+id/criar_conta"
             style="@style/Botao.matchParentCinza"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="6dp"
             android:layout_marginTop="4dp"
+            android:onClick="onClick"
 
             android:text="Criar uma conta do TEL"/>
 
