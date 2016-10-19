@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+
 import com.github.paolorotolo.appintro.AppIntro;
 
 /**
@@ -14,18 +15,14 @@ import com.github.paolorotolo.appintro.AppIntro;
 public class IntroActivity extends AppIntro {
 
 
-    private PrefManager prefManager;
+
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
         // Checking for first time launch - before calling setContentView()
-        prefManager = new PrefManager(this);
-        if (!prefManager.isFirstTimeLaunch()) {
-            launchHomeScreen();
-            finish();
-        }
+
 
         addSlide(SampleSlide.newInstance(R.layout.intro1));
         addSlide(SampleSlide.newInstance(R.layout.intro2));
@@ -33,11 +30,7 @@ public class IntroActivity extends AppIntro {
         setFlowAnimation();
     }
 
-    private void launchHomeScreen() {
-        prefManager.setFirstTimeLaunch(false);
-        startActivity(new Intent(IntroActivity.this, LoginActivity.class));
-        finish();
-    }
+
 
 
         @Override
