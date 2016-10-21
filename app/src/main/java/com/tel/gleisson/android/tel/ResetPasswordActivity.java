@@ -19,7 +19,9 @@ public class ResetPasswordActivity extends AppCompatActivity {
     private EditText inputEmail;
     private Button botaoReset;
     private FirebaseAuth auth;
-    private ProgressBar progressBar;
+   private ProgressBar progressBar;
+    private int indicador;
+  //  private ProgressDialog progressDialog;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,12 +29,15 @@ public class ResetPasswordActivity extends AppCompatActivity {
         setContentView(R.layout.resetsenha_activity);
 
 
+        indicador = 0;
+
+
 
         auth = FirebaseAuth.getInstance();
 
 
         inputEmail = (EditText) findViewById(R.id.email);
-        botaoReset = (Button) findViewById(R.id.botao_resetSenha);
+        botaoReset = (Button) findViewById(R.id.botao_reset_senha_reset);
         progressBar = (ProgressBar) findViewById(R.id.progressBar);
 
 
@@ -41,6 +46,8 @@ public class ResetPasswordActivity extends AppCompatActivity {
             public void onClick(View v) {
 
                 String email = inputEmail.getText().toString().trim();
+
+
 
                 if (TextUtils.isEmpty(email)) {
                     Toast.makeText(getApplication(), getString(R.string.email_registro_de_conta), Toast.LENGTH_SHORT).show();
@@ -54,17 +61,24 @@ public class ResetPasswordActivity extends AppCompatActivity {
                             public void onComplete(@NonNull Task<Void> task) {
                                 if (task.isSuccessful()) {
                                     Toast.makeText(ResetPasswordActivity.this, getString(R.string.EmailEnviado_resetSenha), Toast.LENGTH_SHORT).show();
+                                    indicador = 1;
                                 } else {
                                     Toast.makeText(ResetPasswordActivity.this, getString(R.string.enviar_email_de_resetSenha), Toast.LENGTH_SHORT).show();
                                 }
 
                                 progressBar.setVisibility(View.GONE);
+
+                                if (indicador != 0) {
+                                    finish();
+                                }
                             }
                         });
+
+
             }
         });
 
-     finish();
+
     }
 
 }

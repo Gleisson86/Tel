@@ -8,7 +8,8 @@
     android:layout_height="match_parent"
     android:layout_marginLeft="16dp"
     android:layout_marginRight="16dp"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    tools:context="com.tel.gleisson.android.tel.CriarContaActivity">
 
     <TextView
         android:id="@+id/TelTextView"
@@ -43,7 +44,7 @@
             android:layout_marginTop="2dp">
 
             <EditText
-                android:id="@+id/input_name"
+                android:id="@+id/name"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="Nome"
@@ -60,7 +61,7 @@
             android:layout_marginTop="2dp">
 
             <EditText
-                android:id="@+id/input_email"
+                android:id="@+id/email"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="Email"
@@ -77,7 +78,7 @@
             android:layout_marginTop="2dp">
 
             <EditText
-                android:id="@+id/input_senha"
+                android:id="@+id/senha"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="Senha"
@@ -87,7 +88,7 @@
 
         <android.support.v7.widget.AppCompatButton
 
-            android:id="@+id/entrar_login"
+            android:id="@+id/botao_criar_conta"
             style="@style/Botao.matchParentAzul"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

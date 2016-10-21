@@ -24,9 +24,10 @@ import com.google.firebase.auth.FirebaseAuth;
 public class CriarContaActivity extends AppCompatActivity implements View.OnClickListener {
 
     //defining view objects
+    private EditText editTextNome;
     private EditText editTextEmail;
     private EditText editTextPassword;
-    private Button buttonSignup;
+    private Button botaoCriarConta;
     private ProgressDialog progressDialog;
 
 
@@ -40,22 +41,20 @@ public class CriarContaActivity extends AppCompatActivity implements View.OnClic
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-      //  setContentView(R.layout.criar_conta);
+        setContentView(R.layout.criar_conta);
 
-      //  chamaIntro();
 
         firebaseAuth = FirebaseAuth.getInstance();
 
-        //initializing views
-     //   editTextEmail = (EditText) findViewById (R.id.editTextEmailCriarConta);
-    //    editTextPassword = (EditText) findViewById (R.id.editTextSenhaCriarConta);
-
-   //     buttonSignup = (Button) findViewById(R.id.buttonSignup);
+        editTextNome = (EditText) findViewById (R.id.name);
+        editTextEmail = (EditText) findViewById (R.id.email);
+        editTextPassword = (EditText) findViewById (R.id.senha);
+        botaoCriarConta = (Button) findViewById(R.id.botao_criar_conta);
 
         progressDialog = new ProgressDialog(this);
 
         //attaching listener to button
-        buttonSignup.setOnClickListener(this);
+        botaoCriarConta.setOnClickListener(this);
     }
 
 
@@ -91,7 +90,7 @@ public class CriarContaActivity extends AppCompatActivity implements View.OnClic
         //if the email and password are not empty
         //displaying a progress dialog
 
-        progressDialog.setMessage("Registering Please Wait...");
+        progressDialog.setMessage(getString(R.string.aguarde_registro_conta));
         progressDialog.show();
 
         //creating a new user
@@ -102,7 +101,7 @@ public class CriarContaActivity extends AppCompatActivity implements View.OnClic
 
                 if(task.isSuccessful()){
                     //display some message here
-                    Toast.makeText(CriarContaActivity.this,"Successfully registered",Toast.LENGTH_LONG).show();
+                    Toast.makeText(CriarContaActivity.this,getString(R.string.registro_sucesso),Toast.LENGTH_LONG).show();
                     startActivity( new Intent(CriarContaActivity.this, IntroActivity.class));
                    finish();
                 }else{

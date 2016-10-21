@@ -43,10 +43,6 @@
             android:name=".LoginActivity"
             android:theme="@style/Intro.NoActionBar"/>
 
-        <activity
-              android:name=".SignupActivity"
-            android:theme="@style/Intro.NoActionBar"/>
-
     </application>
 
 </manifest>

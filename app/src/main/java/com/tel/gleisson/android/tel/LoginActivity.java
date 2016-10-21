@@ -40,9 +40,9 @@ public class LoginActivity extends AppCompatActivity {
         inputEmail = (EditText) findViewById(R.id.email);
         inputSenha = (EditText) findViewById(R.id.senha);
         progressBar = (ProgressBar) findViewById(R.id.progressBar);
-        btnSignup = (Button) findViewById(R.id.btn_signup);
+        btnSignup = (Button) findViewById(R.id.cria_conta);
         btnLogin = (Button) findViewById(R.id.btn_login);
-        btnReset = (Button) findViewById(R.id.senhaResetLogin);
+        btnReset = (Button) findViewById(R.id.botao_reset_senha_login);
 
 
         btnReset.setOnClickListener(new View.OnClickListener() {
@@ -59,7 +59,8 @@ public class LoginActivity extends AppCompatActivity {
         btnSignup.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(LoginActivity.this, SignupActivity.class));
+                startActivity(new Intent(LoginActivity.this, CriarContaActivity.class));
+                finish();
             }
         });
 
