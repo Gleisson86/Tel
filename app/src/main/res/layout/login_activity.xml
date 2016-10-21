@@ -8,7 +8,10 @@
     android:layout_height="match_parent"
     android:layout_marginLeft="16dp"
     android:layout_marginRight="16dp"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    tools:context="com.tel.gleisson.android.tel.LoginActivity">
+
+
 
     <TextView
         android:id="@+id/TelTextView"
@@ -44,7 +47,7 @@
             android:layout_marginTop="2dp">
 
             <EditText
-                android:id="@+id/input_email"
+                android:id="@+id/email"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="Email"
@@ -61,7 +64,7 @@
             android:layout_marginTop="2dp">
 
             <EditText
-                android:id="@+id/input_senha"
+                android:id="@+id/senha"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="Senha"
@@ -69,9 +72,10 @@
         </android.support.design.widget.TextInputLayout>
 
 
+
         <android.support.v7.widget.AppCompatButton
 
-            android:id="@+id/entrar_login"
+            android:id="@+id/btn_login"
             style="@style/Botao.matchParentAzul"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -84,7 +88,8 @@
 
 
         <android.support.v7.widget.AppCompatButton
-            android:id="@+id/esqueceu_senha"
+
+            android:id="@+id/senhaResetLogin"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="4dp"
@@ -96,6 +101,14 @@
             android:textColor="@color/android.branco"
             android:textSize="16sp" >
     </android.support.v7.widget.AppCompatButton>
+
+        <ProgressBar
+            android:id="@+id/progressBar"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_gravity="center|bottom"
+            android:layout_marginBottom="30dp"
+            android:visibility="gone" />
 
 
     </LinearLayout>
@@ -111,7 +124,7 @@
 
         <android.support.v7.widget.AppCompatButton
 
-            android:id="@+id/criar_conta"
+            android:id="@+id/btn_signup"
             style="@style/Botao.matchParentCinza"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

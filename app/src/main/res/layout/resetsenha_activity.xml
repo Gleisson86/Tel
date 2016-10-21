@@ -1,5 +1,4 @@
 <?xml version="1.0" encoding="utf-8"?>
-
 <LinearLayout
 
     xmlns:android="http://schemas.android.com/apk/res/android"
@@ -8,7 +7,9 @@
     android:layout_height="match_parent"
     android:layout_marginLeft="16dp"
     android:layout_marginRight="16dp"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    tools:context="com.tel.gleisson.android.tel.ResetPasswordActivity">
+
 
     <TextView
         android:id="@+id/TelTextView"
@@ -34,33 +35,42 @@
         android:paddingRight="16dp"
         android:weightSum="1">
 
-        <!-- Name Label -->
+
+        <!-- Label Reset de senha-->
+
+
+        <TextView
+            android:id="@+id/textView3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:padding="10dp"
+            android:text="@string/esqueceu_a_senha"
+            android:textColor="@android:color/white"
+            android:textSize="20dp"/>
+
+
+        <TextView
+            android:id="@+id/textView4"
+            android:layout_width="313dp"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:gravity="center_horizontal"
+            android:padding="@dimen/activity_horizontal_margin"
+            android:text="@string/esqueceu_senha_msg"
+            android:textColor="@android:color/white"
+
+            android:textSize="16dp"/>
+
         <android.support.design.widget.TextInputLayout
             style="@style/TextLabel"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="2dp"
-            android:layout_marginTop="2dp">
+            android:layout_marginTop="20dp">
 
             <EditText
-                android:id="@+id/input_name"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:hint="Nome"
-                android:inputType="textNoSuggestions"/>
-        </android.support.design.widget.TextInputLayout>
-
-
-        <!-- Email Label -->
-        <android.support.design.widget.TextInputLayout
-            style="@style/TextLabel"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="2dp"
-            android:layout_marginTop="2dp">
-
-            <EditText
-                android:id="@+id/input_email"
+                android:id="@+id/email"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="Email"
@@ -68,38 +78,28 @@
         </android.support.design.widget.TextInputLayout>
 
 
-        <!-- Password Label -->
-        <android.support.design.widget.TextInputLayout
-            style="@style/TextLabel"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="2dp"
-            android:layout_marginTop="2dp">
-
-            <EditText
-                android:id="@+id/input_senha"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:hint="Senha"
-                android:inputType="textPassword"/>
-        </android.support.design.widget.TextInputLayout>
-
-
         <android.support.v7.widget.AppCompatButton
 
-            android:id="@+id/entrar_login"
+            android:id="@+id/botao_resetSenha"
             style="@style/Botao.matchParentAzul"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="2dp"
+            android:layout_marginTop="18dp"
             android:gravity="center"
-            android:text="Registrar"
-            android:onClick="onClick">
+            android:onClick="onClick"
+            android:text="Reset de senha">
 
         </android.support.v7.widget.AppCompatButton>
 
 
-    </LinearLayout>
+        <ProgressBar
+            android:id="@+id/progressBar"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_gravity="center|bottom"
+            android:layout_marginBottom="30dp"
+            android:visibility="gone"/>
 
+    </LinearLayout>
 
 </LinearLayout>

@@ -14,18 +14,27 @@
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:supportsRtl="true"
-        android:theme="@style/Intro.Fullscreen">
-        <activity android:name=".IntroActivity">
+        android:theme="@style/Intro.NoActionBar">
+        <activity
+            android:name=".MainActivity"
+            android:theme="@style/Intro">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
 
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
+            </activity>
+
+
+        <activity
+            android:name=".IntroActivity"
+            android:theme="@style/Intro.Fullscreen">
         </activity>
 
         <activity
-            android:name=".MainActivity"
-            android:theme="@style/Intro"/>
+            android:name=".ResetPasswordActivity"
+            android:theme="@style/Intro.NoActionBar">
+        </activity>
 
         <activity
             android:name=".CriarContaActivity"
@@ -36,12 +45,6 @@
 
         <activity
               android:name=".SignupActivity"
-            android:label="@string/title_activity_signup"
-            android:theme="@style/Intro.NoActionBar"/>
-
-
-        <activity
-            android:name=".ResetPasswordActivity"
             android:theme="@style/Intro.NoActionBar"/>
 
     </application>

@@ -40,17 +40,17 @@ public class CriarContaActivity extends AppCompatActivity implements View.OnClic
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.criar_conta);
+      //  setContentView(R.layout.criar_conta);
 
       //  chamaIntro();
 
         firebaseAuth = FirebaseAuth.getInstance();
 
         //initializing views
-        editTextEmail = (EditText) findViewById (R.id.editTextEmailCriarConta);
-        editTextPassword = (EditText) findViewById (R.id.editTextSenhaCriarConta);
+     //   editTextEmail = (EditText) findViewById (R.id.editTextEmailCriarConta);
+    //    editTextPassword = (EditText) findViewById (R.id.editTextSenhaCriarConta);
 
-        buttonSignup = (Button) findViewById(R.id.buttonSignup);
+   //     buttonSignup = (Button) findViewById(R.id.buttonSignup);
 
         progressDialog = new ProgressDialog(this);
 

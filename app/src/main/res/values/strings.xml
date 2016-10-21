@@ -38,7 +38,9 @@
         completions."
     </string>
 
-
+    <string name="entreComEmail">Entre com um endereço de email, ao qual irá registrar a conta!</string>
+    <string name="entreComUmaSenha">Entre com uma senha!</string>
+    <string name="entreComUmNome">Digite seu nome!</string>
     <string name="action_sign_in_short">Register</string>
     <string name="email">Email</string>
     <string name="minimum_password">Senha muito curta, entre no minimo com 6 caracteres!</string>
@@ -65,7 +67,7 @@
     <string name="btn_send">Send</string>
     <string name="btn_remove">Remove</string>
     <string name="btn_sign_out">Sign Out</string>
-    <string name="lbl_forgot_password">Forgot password?</string>
+    <string name="esqueceu_a_senha">Esquece a senha?</string>
     <string name="EmailEnviado_resetSenha">Enviamos um email com as instruções para o reset de sua senha!</string>
     <string name="title_activity_signup">SignupActivity</string>
     <string name="enviar_email_de_resetSenha" > Falha ao tentar enviar email de reset de senha! Check o email inserido!</string>

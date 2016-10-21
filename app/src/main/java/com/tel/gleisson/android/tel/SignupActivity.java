@@ -16,10 +16,10 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 
-public class SignupActivity extends AppCompatActivity {
+public class SignupActivity extends AppCompatActivity implements View.OnClickListener {
 
-    private EditText inputEmail, inputPassword;
-    private Button btnSignIn, btnSignUp, btnResetPassword;
+    private EditText inputNome, inputEmail, inputSenha;
+    private Button  btnRegistrar;
     private ProgressBar progressBar;
     private FirebaseAuth auth;
 
@@ -31,53 +31,47 @@ public class SignupActivity extends AppCompatActivity {
         //Get Firebase auth instance
         auth = FirebaseAuth.getInstance();
 
-        btnSignIn = (Button) findViewById(R.id.sign_in_button);
-        btnSignUp = (Button) findViewById(R.id.sign_up_button);
-        inputEmail = (EditText) findViewById(R.id.email);
-        inputPassword = (EditText) findViewById(R.id.password);
+    //    btnSignIn = (Button) findViewById(R.id.sign_in_button);
+        btnRegistrar = (Button) findViewById(R.id.registrar);
+        inputNome = (EditText) findViewById(R.id.input_nome);
+        inputEmail = (EditText) findViewById(R.id.input_email);
+        inputSenha = (EditText) findViewById(R.id.input_senha);
         progressBar = (ProgressBar) findViewById(R.id.progressBar);
-        btnResetPassword = (Button) findViewById(R.id.btn_reset_password);
 
-        btnResetPassword.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-              //  startActivity(new Intent(SignupActivity.this, ResetPasswordActivity.class));
-            }
-        });
 
-        btnSignIn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                finish();
-            }
-        });
 
-        btnSignUp.setOnClickListener(new View.OnClickListener() {
+        btnRegistrar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
                 String email = inputEmail.getText().toString().trim();
-                String password = inputPassword.getText().toString().trim();
+                String senha = inputSenha.getText().toString().trim();
+                String nome  = inputNome.getText().toString().trim();
 
                 if (TextUtils.isEmpty(email)) {
-                    Toast.makeText(getApplicationContext(), "Enter email address!", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getApplicationContext(), getString(R.string.entreComEmail), Toast.LENGTH_SHORT).show();
                     return;
                 }
 
-                if (TextUtils.isEmpty(password)) {
-                    Toast.makeText(getApplicationContext(), "Enter password!", Toast.LENGTH_SHORT).show();
+                if (TextUtils.isEmpty(senha)) {
+                    Toast.makeText(getApplicationContext(), getString(R.string.entreComUmaSenha), Toast.LENGTH_SHORT).show();
                     return;
                 }
 
-                if (password.length() < 6) {
-                    Toast.makeText(getApplicationContext(), "Password muito curto, entre com no minimo 6 caracter!", Toast.LENGTH_SHORT).show();
+                if (TextUtils.isEmpty(nome)) {
+                    Toast.makeText(getApplicationContext(), getString(R.string.entreComUmNome), Toast.LENGTH_SHORT).show();
+                    return;
+                }
+
+                if (senha.length() < 6) {
+                    Toast.makeText(getApplicationContext(), getString(R.string.minimum_password), Toast.LENGTH_SHORT).show();
                     return;
                 }
 
                 progressBar.setVisibility(View.VISIBLE);
                 //create user
 
-                auth.createUserWithEmailAndPassword(email, password)
+                auth.createUserWithEmailAndPassword(email, senha)
                         .addOnCompleteListener(SignupActivity.this, new OnCompleteListener<AuthResult>() {
                             @Override
                             public void onComplete(@NonNull Task<AuthResult> task) {
@@ -105,5 +99,10 @@ public class SignupActivity extends AppCompatActivity {
     protected void onResume() {
         super.onResume();
         progressBar.setVisibility(View.GONE);
+    }
+
+    @Override
+    public void onClick(View v) {
+
     }
 }
