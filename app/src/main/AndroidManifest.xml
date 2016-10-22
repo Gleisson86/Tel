@@ -23,26 +23,24 @@
 
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
-            </activity>
-
+        </activity>
 
         <activity
             android:name=".IntroActivity"
             android:theme="@style/Intro.Fullscreen">
         </activity>
-
         <activity
             android:name=".ResetPasswordActivity"
-            android:theme="@style/Intro.NoActionBar">
+            android:theme="@style/Intro.ActionBar"
+            android:parentActivityName=".LoginActivity">
         </activity>
-
         <activity
             android:name=".CriarContaActivity"
-            android:theme="@style/Intro.Fullscreen"/>
+            android:theme="@style/Intro.ActionBar"
+            android:parentActivityName=".LoginActivity"/>
         <activity
             android:name=".LoginActivity"
             android:theme="@style/Intro.NoActionBar"/>
-
     </application>
 
 </manifest>

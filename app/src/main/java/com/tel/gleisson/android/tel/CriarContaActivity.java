@@ -91,6 +91,7 @@ public class CriarContaActivity extends AppCompatActivity implements View.OnClic
         //displaying a progress dialog
 
         progressDialog.setMessage(getString(R.string.aguarde_registro_conta));
+        progressDialog.setTitle("Registrando..");
         progressDialog.show();
 
         //creating a new user
@@ -102,12 +103,12 @@ public class CriarContaActivity extends AppCompatActivity implements View.OnClic
                 if(task.isSuccessful()){
                     //display some message here
                     Toast.makeText(CriarContaActivity.this,getString(R.string.registro_sucesso),Toast.LENGTH_LONG).show();
-                    startActivity( new Intent(CriarContaActivity.this, IntroActivity.class));
+                    startActivity( new Intent(CriarContaActivity.this, MainActivity.class));
                    finish();
                 }else{
                     //display some message here
                     Toast.makeText(CriarContaActivity.this,"Registration Error",Toast.LENGTH_LONG).show();
-                    finish();
+
                 }
                 progressDialog.dismiss();
             }

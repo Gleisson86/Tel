@@ -8,7 +8,8 @@
     android:layout_marginLeft="16dp"
     android:layout_marginRight="16dp"
     android:orientation="vertical"
-    tools:context="com.tel.gleisson.android.tel.ResetPasswordActivity">
+    tools:context="com.tel.gleisson.android.tel.ResetPasswordActivity"
+    android:baselineAligned="false">
 
 
     <TextView
@@ -63,7 +64,7 @@
             android:textSize="16dp"/>
 
         <ProgressBar
-            android:id="@+id/progressBar"
+            android:id="@+id/progressBarReset"
             android:layout_width="40dp"
             android:layout_height="40dp"
             android:layout_gravity="center|bottom"

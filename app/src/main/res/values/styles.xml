@@ -11,16 +11,29 @@
 
     </style>
 
+    <style name="Intro.ActionBar" parent="Intro">
+        <!--<item name="windowNoTitle">true</item>
+        <item name="windowActionBar">false</item> -->
+        <item name="colorPrimaryDark">@color/android.corPrimariaDark</item>
+        <item name="colorPrimary">@color/android.corPrimaria</item>
+        <item name="android:textColorPrimary">@color/android.branco</item>
+        <item name="colorAccent">@color/android.corCinzaClaro</item>
+        <item name="android:windowBackground">@color/android.corPrimaria</item>
+    </style>
+
+
     <style name="Intro.NoActionBar" parent="Theme.AppCompat.Light.NoActionBar">
         <!-- Customize your theme here. -->
         <item name="android:statusBarColor">@color/android.preto</item>
         <item name="android:navigationBarColor">@color/android.preto</item>
+        <item name="android:textColorPrimary">@color/android.branco</item>
+        <item name="colorAccent">@color/android.corCinzaClaro</item>
         <item name="android:windowBackground">@color/android.corPrimaria</item>
 
     </style>
 
 
-    <style name="Intro.Fullscreen">
+    <style name="Intro.Fullscreen" parent="Intro">
         <item name="windowActionBar">false</item>
         <item name="windowNoTitle">true</item>
         <item name="android:windowFullscreen">true</item>

@@ -7,7 +7,6 @@ import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -19,9 +18,9 @@ public class ResetPasswordActivity extends AppCompatActivity {
     private EditText inputEmail;
     private Button botaoReset;
     private FirebaseAuth auth;
-   private ProgressBar progressBar;
     private int indicador;
-  //  private ProgressDialog progressDialog;
+
+    //  private ProgressDialog progressDialog;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,56 +28,52 @@ public class ResetPasswordActivity extends AppCompatActivity {
         setContentView(R.layout.resetsenha_activity);
 
 
+     //   getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+     //   getSupportActionBar().setHomeButtonEnabled(true);
+
+
+
         indicador = 0;
-
-
-
         auth = FirebaseAuth.getInstance();
-
-
         inputEmail = (EditText) findViewById(R.id.email);
         botaoReset = (Button) findViewById(R.id.botao_reset_senha_reset);
-        progressBar = (ProgressBar) findViewById(R.id.progressBar);
 
 
         botaoReset.setOnClickListener(new View.OnClickListener() {
+
+
             @Override
             public void onClick(View v) {
 
                 String email = inputEmail.getText().toString().trim();
-
+                final ClasseUtil classeUtil = new ClasseUtil(ResetPasswordActivity.this);
 
 
                 if (TextUtils.isEmpty(email)) {
-                    Toast.makeText(getApplication(), getString(R.string.email_registro_de_conta), Toast.LENGTH_SHORT).show();
+                    classeUtil.chamaDialogo(getString(R.string.atencao), getString(R.string.entreComEmailMensagem));
+                    // Toast.makeText(getApplication(), getString(R.string.email_registro_de_conta), Toast.LENGTH_SHORT).show();
                     return;
                 }
 
-                progressBar.setVisibility(View.VISIBLE);
+                classeUtil.chamaProgess(getString(R.string.aguardeTitulo), getString(R.string.processandoTitulo));
+                //    progressBar.setVisibility(View.VISIBLE);
                 auth.sendPasswordResetEmail(email)
                         .addOnCompleteListener(new OnCompleteListener<Void>() {
                             @Override
                             public void onComplete(@NonNull Task<Void> task) {
-                                if (task.isSuccessful()) {
-                                    Toast.makeText(ResetPasswordActivity.this, getString(R.string.EmailEnviado_resetSenha), Toast.LENGTH_SHORT).show();
-                                    indicador = 1;
+                                classeUtil.chamaProgresFim();
+                                if (!task.isSuccessful()) {
+                                    classeUtil.chamaDialogo(getString(R.string.falhaEnviarEmailResetTitulo), getString(R.string.falhaEnviarEmailResetMensagem));
+                                    //     Toast.makeText(ResetPasswordActivity.this, getString(R.string.emailEnviado_resetSenha), Toast.LENGTH_SHORT).show();
                                 } else {
-                                    Toast.makeText(ResetPasswordActivity.this, getString(R.string.enviar_email_de_resetSenha), Toast.LENGTH_SHORT).show();
-                                }
-
-                                progressBar.setVisibility(View.GONE);
-
-                                if (indicador != 0) {
+                                    // classeUtil.chamaDialogo(getString(R.string.okTitulo), getString(R.string.emailEnviado_resetSenha));
+                                    Toast.makeText(ResetPasswordActivity.this, getString(R.string.emailEnviado_resetSenha), Toast.LENGTH_SHORT).show();
                                     finish();
                                 }
                             }
                         });
-
-
             }
         });
-
-
     }
 
 }

@@ -9,8 +9,6 @@ import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.ProgressBar;
-import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -21,7 +19,6 @@ public class LoginActivity extends AppCompatActivity {
 
     private EditText inputEmail, inputSenha;
     private FirebaseAuth auth;
-    private ProgressBar progressBar;
     private Button btnSignup, btnLogin, btnReset;
 
     @Override
@@ -31,6 +28,7 @@ public class LoginActivity extends AppCompatActivity {
         //Get Firebase auth instance
         auth = FirebaseAuth.getInstance();
 
+
         // set the view now
         setContentView(R.layout.login_activity);
 
@@ -39,7 +37,7 @@ public class LoginActivity extends AppCompatActivity {
 
         inputEmail = (EditText) findViewById(R.id.email);
         inputSenha = (EditText) findViewById(R.id.senha);
-        progressBar = (ProgressBar) findViewById(R.id.progressBar);
+       // progressDialog = (ProgressBar) findViewById(R.id.progressBarLogin);
         btnSignup = (Button) findViewById(R.id.cria_conta);
         btnLogin = (Button) findViewById(R.id.btn_login);
         btnReset = (Button) findViewById(R.id.botao_reset_senha_login);
@@ -50,6 +48,7 @@ public class LoginActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Intent intent = new Intent(LoginActivity.this, ResetPasswordActivity.class);
                 startActivity(intent);
+
             }
         });
 
@@ -70,22 +69,29 @@ public class LoginActivity extends AppCompatActivity {
             public void onClick(View v) {
                 String email = inputEmail.getText().toString().trim();
                 final String password = inputSenha.getText().toString().trim();
+                final ClasseUtil classeUtil = new ClasseUtil(LoginActivity.this);
+
+
 
                 if (TextUtils.isEmpty(email)) {
-                    Toast.makeText(getApplicationContext(), getString(R.string.entreComEmail), Toast.LENGTH_SHORT).show();
+                 classeUtil.chamaDialogo(getString(R.string.entreComEmailMensagem),getString(R.string.tentenovamente));
                     return;
                 }
                 if (TextUtils.isEmpty(password)) {
-                    Toast.makeText(getApplicationContext(), getString(R.string.entreComUmaSenha), Toast.LENGTH_SHORT).show();
+                    classeUtil.chamaDialogo(getString(R.string.entreComSenhaTitulo),getString(R.string.tentenovamente));
                     return;
                 }
 
                 if (password.length()<6) {
-                    Toast.makeText(getApplicationContext(), getString(R.string.minimum_password), Toast.LENGTH_SHORT).show();
+
+                    classeUtil.chamaDialogo(getString(R.string.senhaCurtaTitulo),getString(R.string.senhaCurtaMensagem));
+                    //Toast.makeText(getApplicationContext(), getString(R.string.minimum_password), Toast.LENGTH_SHORT).show();
                     return;
                 }
 
-                progressBar.setVisibility(View.VISIBLE);
+                //progressBar.setVisibility(View.VISIBLE);
+                classeUtil.chamaProgess(getString(R.string.processandoTitulo),getString(R.string.aguardeMensagem));
+
 
                 //authenticate user
                 auth.signInWithEmailAndPassword(email, password)
@@ -95,7 +101,8 @@ public class LoginActivity extends AppCompatActivity {
                                 // If sign in fails, display a message to the user. If sign in succeeds
                                 // the auth state listener will be notified and logic to handle the
                                 // signed in user can be handled in the listener.
-                                progressBar.setVisibility(View.GONE);
+                       //         progressBar.setVisibility(View.GONE);
+                                classeUtil.chamaProgresFim();
                                 if (task.isSuccessful())
                                 {
                                     Intent intent = new Intent(LoginActivity.this, MainActivity.class);
@@ -104,13 +111,16 @@ public class LoginActivity extends AppCompatActivity {
 
 
                                 } else {
-                                    Toast.makeText(LoginActivity.this, getString(R.string.auth_failed), Toast.LENGTH_LONG).show();
+                                    classeUtil.chamaDialogo(getString(R.string.falhaAutenticacaoTitulo),getString(R.string.falhaAutenticacaoMensagem));
+                                  //  Toast.makeText(LoginActivity.this, getString(R.string.falhaAutenticacaoTitulo), Toast.LENGTH_LONG).show();
                                 }
                             }
                         });
             }
         });
     }
+
+
 
    @Override
     protected void onResume() {

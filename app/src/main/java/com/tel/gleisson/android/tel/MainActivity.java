@@ -35,7 +35,6 @@ public class MainActivity extends AppCompatActivity  {
     private void launchIntroScreen() {
         startActivity(new Intent(MainActivity.this, IntroActivity.class));
         finish();
-
     }
 
     @Override
