@@ -14,10 +14,11 @@
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:supportsRtl="true"
-        android:theme="@style/Intro.NoActionBar">
+        android:theme="@style/Intro">
         <activity
+
             android:name=".MainActivity"
-            android:theme="@style/Intro">
+            android:theme="@style/Intro.Main">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
 

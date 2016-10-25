@@ -22,6 +22,12 @@
         na comunidade de telecomunicações.
     </string>
 
+    <string name="falhaAoDeletarConta">Falha ao tentar excluir a conta</string>
+    <string name="contaExcluidaMensagem">Conta excluida</string>
+    <string name="falhaAoSair">Falha ao tentar sair</string>
+    <string name="deletarContaMensagem">Você realmente deseja deletar esta conta?</string>
+    <string name="nomeCompleto">Nome Completo</string>
+    <string name="nomeCompletoVazio">Campo Nome Completo vazio!</string>
     <string name="atencao">Atenção</string>
     <string name="okTitulo">Ok!</string>
     <string name="processandoTitulo">Processando</string>
@@ -34,8 +40,8 @@
     <string name="entreComEmailMensagem">Campo email vazio!</string>
     <string name="entreComEmailRegistro">Entre com um endereço de email, ao qual irá registrar a conta!</string>
     <string name="entreComSenhaTitulo">Campo senha vazio!</string>
-    <string name="aguarde_registro_conta">Por favor aguarde, estamos te registrando...</string>
-    <string name="registro_sucesso">Registro criado com sucesso!</string>
+    <string name="aguarde_registro_conta">Por favor aguarde, estamos criado sua conta...</string>
+    <string name="conta_criada_sucesso">Conta criada com sucesso!</string>
     <string name="entreComUmNome">Digite seu nome!</string>
     <string name="email">Email</string>
     <string name="minimum_password">Senha muito curta, entre no minimo com 6 caracteres!</string>
@@ -43,25 +49,30 @@
     <string name="falhaEnviarEmailResetMensagem">Certifique que o endereço de email foi digitado correto</string>
     <string name="falhaAutenticacaoTitulo">Falha na autênticação</string>
     <string name="falhaAutenticacaoMensagem">Verifique o endereço de email e senha digitado e tente novamente</string>
-    <string name="change_email">Mudar Email</string>
-    <string name="change_password">Mudar Senbha</string>
-    <string name="send_password_reset_email">Send Password reset email</string>
-    <string name="remove_user">Remover Usuário</string>
-    <string name="new_pass">Nova Senha</string>
-    <string name="title_activity_profile">Firebase</string>
-    <string name="title_activity_login">Login</string>
-    <string name="hint_email">Email</string>
-    <string name="hint_password">Senha</string>
-    <string name="hint_name">Nome Completo</string>
-    <string name="btn_forgot_password">Esqueceu sua senha?</string>
-    <string name="btn_reset_password">Reset de senha</string>
     <string name="esqueceu_a_senha">Esqueceu a senha?</string>
     <string name="emailEnviado_resetSenha">Enviamos um email com as instruções para o reset de sua senha!</string>
-    <string name="title_activity_signup">SignupActivity</string>
     <string name="enviar_email_de_resetSenha"> Falha ao tentar enviar email de reset de senha! Check o email inserido!</string>
     <string name="email_registro_de_conta">Entre com o email que registrou sua conta!</string>
     <string name="esqueceu_senha_msg">Nós só precisamos do seu e-mail cadastrado para enviar-lhe instruções de redefinição de senha </string>
-    <string name="title_activity_teste">Sign in</string>
+
+
+    <!-- Strings para o exemplo do Material design-->
+
+        <string name="action_settings">Settings</string>
+        <string name="item_title">Palais Garnier</string>
+    <string name="item_desc">The Palais Garnier which locates in Paris was built from 1861 for
+        the Paris Opera.
+    </string>
+    <string name="detail_desc">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do
+        eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis
+        nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute
+        irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
+        pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia
+        deserunt mollit anim id est laborum.
+    </string>
+        <string name="detail_location">"8 Rue Scribe, 75009 Paris, France"</string>
+
+
 
 
 
