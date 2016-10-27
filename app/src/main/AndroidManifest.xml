@@ -16,7 +16,6 @@
         android:supportsRtl="true"
         android:theme="@style/Intro">
         <activity
-
             android:name=".MainActivity"
             android:theme="@style/Intro.Main">
             <intent-filter>
@@ -25,20 +24,23 @@
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
-
         <activity
             android:name=".IntroActivity"
             android:theme="@style/Intro.Fullscreen">
         </activity>
         <activity
             android:name=".ResetPasswordActivity"
-            android:theme="@style/Intro.ActionBar"
-            android:parentActivityName=".LoginActivity">
+            android:parentActivityName=".LoginActivity"
+            android:theme="@style/Intro.ActionBar">
+        </activity>
+        <activity
+            android:name=".Conta_usuario_activity"
+            android:theme="@style/Intro.Usuario">
         </activity>
         <activity
             android:name=".CriarContaActivity"
-            android:theme="@style/Intro.ActionBar"
-            android:parentActivityName=".LoginActivity"/>
+            android:parentActivityName=".LoginActivity"
+            android:theme="@style/Intro.ActionBar"/>
         <activity
             android:name=".LoginActivity"
             android:theme="@style/Intro.NoActionBar"/>

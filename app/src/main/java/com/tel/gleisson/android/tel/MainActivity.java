@@ -1,14 +1,19 @@
 package com.tel.gleisson.android.tel;
 
+import android.app.SearchManager;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
+import android.support.v4.view.MenuItemCompat;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.SearchView;
 import android.support.v7.widget.Toolbar;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.widget.Button;
 
 import com.google.firebase.auth.FirebaseAuth;
@@ -18,7 +23,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 
-public class MainActivity extends AppCompatActivity  {
+public class MainActivity extends AppCompatActivity {
 
     private PrefManager prefManager;
     private FirebaseAuth auth;
@@ -41,18 +46,18 @@ public class MainActivity extends AppCompatActivity  {
         classeUtil = new ClasseUtil(this);
         setContentView(R.layout.telainicial_main);
 
-      //  sair = (Button) findViewById(R.id.sair);
-     //   deletarConta = (Button) findViewById(R.id.deletarConta);
-        user = FirebaseAuth.getInstance().getCurrentUser();
 
+        //  sair = (Button) findViewById(R.id.sair);
+        //   deletarConta = (Button) findViewById(R.id.deletarConta);
+        user = FirebaseAuth.getInstance().getCurrentUser();
 
         // Adding Toolbar to Main screen
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-        // Setting ViewPager for each Tabs
+
         ViewPager viewPager = (ViewPager) findViewById(R.id.viewpager);
         setupViewPager(viewPager);
-        // Set Tabs inside Toolbar
+
         TabLayout tabs = (TabLayout) findViewById(R.id.tabs);
         tabs.setupWithViewPager(viewPager);
 
@@ -61,53 +66,62 @@ public class MainActivity extends AppCompatActivity  {
         if (prefManager.isFirstTimeLaunch()) {
             launchIntroScreen();
         }
+    }
 
-        /*
-        sair.setOnClickListener(new View.OnClickListener() {
+    private void setupViewPager(ViewPager viewPager) {
+        Adapter adapter = new Adapter(getSupportFragmentManager());
+        adapter.addFragment(new Equipamento_fragment(),"Equipamento");
+        adapter.addFragment(new Acesso_fragment(),"Acesso");
+        adapter.addFragment(new Infra_fragment(),"Infra");
+        viewPager.setAdapter(adapter);
+    }
 
-            @Override
-                public void onClick(View v) {
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        // Inflate the menu; this adds items to the action bar if it is present.
+        getMenuInflater().inflate(R.menu.main_menu, menu);
 
-           //     classeUtil.chamaDialogo(null,getString(R.string.voceRealmenteSair));
-                    auth.signOut();
-                Intent intent = new Intent(MainActivity.this, LoginActivity.class);
-                startActivity(intent);
-                finish();
-            }
-        });
+        final SearchView searchView = (SearchView) MenuItemCompat.getActionView(menu.findItem(R.id.action_search));
+        SearchManager searchManager = (SearchManager) getSystemService(SEARCH_SERVICE);
+        searchView.setSearchableInfo(searchManager.getSearchableInfo(getComponentName()));
 
+        return true;
+    }
 
-        deletarConta.setOnClickListener(new View.OnClickListener() {
+    private void launchIntroScreen() {
+        startActivity(new Intent(MainActivity.this, IntroActivity.class));
+        finish();
+    }
 
-            @Override
-            public void onClick(View v) {
-                   //  classeUtil.chamaDialogo(null,getString(R.string.deletarContaMensagem));
-                     classeUtil.chamaProgess(getString(R.string.aguardeTitulo),getString(R.string.processandoTitulo));
-                user.delete()
-                        .addOnCompleteListener(new OnCompleteListener<Void>() {
-                            @Override
-                            public void onComplete(@NonNull Task<Void> task) {
-                                 classeUtil.chamaProgresFim();
-                                if (task.isSuccessful()) {
-                                    Toast.makeText(MainActivity.this,getString(R.string.contaExcluidaMensagem),Toast.LENGTH_LONG).show();
-                                    Intent intent = new Intent(MainActivity.this, LoginActivity.class);
-                                    startActivity(intent);
-                                    finish();
-                                }
-                                else {
-                                    Toast.makeText(MainActivity.this, getString(R.string.falhaAoDeletarConta), Toast.LENGTH_LONG).show();
-                                }
-                            }
-                        });
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.action_search1:
+                // User chose the "Settings" item, show the app settings UI...
 
+                return true;
 
-            }
-        });      */
+            case R.id.action_favorite:
+                startActivity(new Intent(MainActivity.this, Conta_usuario_activity.class));
+                // User chose the "Favorite" action, mark the current item
+                // as a favorite...
+                return true;
 
+            default:
+                // If we got here, the user's action was not recognized.
+                // Invoke the superclass to handle it.
+                return super.onOptionsItemSelected(item);
+        }
+    }
 
+    @Override
+    protected void onResume() {
+        super.onResume();
 
+        if (auth.getCurrentUser() == null) {
+            startActivity(new Intent(MainActivity.this, LoginActivity.class));
 
-
+        }
     }
 
     static class Adapter extends FragmentPagerAdapter {
@@ -120,8 +134,7 @@ public class MainActivity extends AppCompatActivity  {
 
         @Override
         public Fragment getItem(int position) {
-
-            return  mFragmentList.get(position);
+            return mFragmentList.get(position);
         }
 
         @Override
@@ -139,34 +152,5 @@ public class MainActivity extends AppCompatActivity  {
             return mFragmentTitleList.get(position);
         }
     }
-
-
-
-    private void setupViewPager(ViewPager viewPager) {
-        Adapter adapter = new Adapter(getSupportFragmentManager());
-      //  adapter.addFragment(new ListContentFragment(), "List");
-      //  adapter.addFragment(new TileContentFragment(), "Tile");
-        adapter.addFragment(new CardFraguimentoEquipamento(), "Equipamento");
-        viewPager.setAdapter(adapter);
-    }
-
-
-    private void launchIntroScreen() {
-        startActivity(new Intent(MainActivity.this, IntroActivity.class));
-        finish();
-    }
-
-    @Override
-    protected void onResume() {
-        super.onResume();
-
-        if (auth.getCurrentUser() == null) {
-            startActivity(new Intent(MainActivity.this, LoginActivity.class));
-
-
-        }
-    }
-    //---- Fim SharedPreference
-    //----------------------------------------------------
 
 }

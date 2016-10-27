@@ -22,6 +22,15 @@
     </style>
 
 
+    <style name="Intro.Usuario" parent="Intro.Fullscreen">
+
+        <item name="android:textColorPrimary">@color/android.corCinzaClaro</item>
+        <item name="android:windowBackground">@color/android.branco</item>
+        <item name="colorAccent">@color/android.corAcentuada</item>
+
+    </style>
+
+
     <style name="Intro.NoActionBar" parent="Theme.AppCompat.Light.NoActionBar">
         <!-- Customize your theme here. -->
 
@@ -35,6 +44,7 @@
 
     <style name="Intro.Main" parent="Theme.AppCompat.Light.NoActionBar">
         <!-- Customize your theme here. -->
+
         <item name="android:statusBarColor">@color/android.preto</item>
         <item name="android:navigationBarColor">@color/android.preto</item>
         <item name="colorPrimaryDark">@color/android.corPrimariaDark</item>

@@ -21,7 +21,7 @@
         mais chance terá de ficar popular
         na comunidade de telecomunicações.
     </string>
-
+    <string name="conta">Conta usuário</string>
     <string name="falhaAoDeletarConta">Falha ao tentar excluir a conta</string>
     <string name="contaExcluidaMensagem">Conta excluida</string>
     <string name="falhaAoSair">Falha ao tentar sair</string>
@@ -58,8 +58,8 @@
 
     <!-- Strings para o exemplo do Material design-->
 
-        <string name="action_settings">Settings</string>
-        <string name="item_title">Palais Garnier</string>
+    <string name="action_settings">Settings</string>
+    <string name="item_title">Palais Garnier</string>
     <string name="item_desc">The Palais Garnier which locates in Paris was built from 1861 for
         the Paris Opera.
     </string>
@@ -70,10 +70,7 @@
         pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia
         deserunt mollit anim id est laborum.
     </string>
-        <string name="detail_location">"8 Rue Scribe, 75009 Paris, France"</string>
-
-
-
+    <string name="detail_location">"8 Rue Scribe, 75009 Paris, France"</string>
 
 
 </resources>
