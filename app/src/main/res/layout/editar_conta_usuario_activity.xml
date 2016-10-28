@@ -53,17 +53,17 @@
                 android:src="@drawable/ic_keyboard_backspace_white_36dp"/>
 
             <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_margin="16dp"
-                android:padding="16dp"
-                android:text="Editar Conta"
-                android:layout_gravity="center"
-                android:textSize="24dp"
-                android:gravity="center"
-                android:textColor="@color/android.branco"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="16dp"
+            android:padding="16dp"
+            android:text="Editar Conta"
+            android:layout_gravity="center"
+            android:textSize="24dp"
+            android:gravity="center"
+            android:textColor="@color/android.branco"
 
-                android:id="@+id/textView2"/>
+            android:id="@+id/textView2"/>
 
             <ImageButton
                 android:id="@+id/botao_confirmar"

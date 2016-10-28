@@ -14,7 +14,7 @@ public class Conta_usuario_activity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.conta_usuario_activity);
+        setContentView(R.layout.editar_conta_usuario_activity);
 
 
 

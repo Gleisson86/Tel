@@ -3,6 +3,7 @@ package com.tel.gleisson.android.tel;
 import android.app.SearchManager;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
@@ -14,6 +15,7 @@ import android.support.v7.widget.SearchView;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.Button;
 
 import com.google.firebase.auth.FirebaseAuth;
@@ -29,6 +31,7 @@ public class MainActivity extends AppCompatActivity {
     private FirebaseAuth auth;
     private ClasseUtil classeUtil;
     private FirebaseUser user;
+    FloatingActionButton fab;
 
     private Button sair;
     private Button deletarConta;
@@ -47,6 +50,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.telainicial_main);
 
 
+
         //  sair = (Button) findViewById(R.id.sair);
         //   deletarConta = (Button) findViewById(R.id.deletarConta);
         user = FirebaseAuth.getInstance().getCurrentUser();
@@ -60,6 +64,17 @@ public class MainActivity extends AppCompatActivity {
 
         TabLayout tabs = (TabLayout) findViewById(R.id.tabs);
         tabs.setupWithViewPager(viewPager);
+
+
+        fab = (FloatingActionButton) findViewById(R.id.fab);
+        fab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                // Click action
+                Intent intent = new Intent(MainActivity.this, NovoCard_Activity.class);
+                startActivity(intent);
+            }
+        });
 
 
         // Checking for first time launch - before calling setContentView()

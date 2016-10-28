@@ -44,6 +44,8 @@
         <activity
             android:name=".LoginActivity"
             android:theme="@style/Intro.NoActionBar"/>
+        <activity android:name=".NovoCard_Activity">
+        </activity>
     </application>
 
 </manifest>
