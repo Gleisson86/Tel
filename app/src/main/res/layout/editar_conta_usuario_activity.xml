@@ -6,7 +6,7 @@
     android:id="@+id/activity_conta_usuario_activity"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.tel.gleisson.android.tel.Conta_usuario_activity"
+    tools:context="com.tel.gleisson.android.tel.activity.EditarContaActivity"
     android:orientation="vertical">
 
 
@@ -19,64 +19,62 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="@color/android.corPrimaria"
-            android:layout_below="@+id/layout_horizontal_usuario">
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:id="@+id/layout_horizontal_usuario"
+                android:layout_width="match_parent"
+                android:layout_height="61dp"
+                android:background="@color/android.corPrimaria"
+                android:orientation="horizontal"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentStart="true">
 
 
-         <ImageView
-             android:layout_width="match_parent"
-             android:layout_height="match_parent"
-             android:src="@drawable/ic_person_white_48dp"/>
+                <ImageButton
+                    android:id="@+id/botao_voltar"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="16dp"
+                    android:layout_marginLeft="16dp"
+                    android:layout_marginTop="16dp"
+                    android:layout_weight="1"
+                    android:background="@color/android.corPrimaria"
+                    android:onClick="onClick"
+                    android:padding="8dp"
+                    android:src="@drawable/ic_keyboard_backspace_white_36dp"/>
 
+                <TextView
+                    android:id="@+id/textView2"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_margin="8dp"
+                    android:layout_weight="4"
+                    android:gravity="center"
+                    android:text="Editar conta"
+                    android:textColor="@color/android.branco"
+                    android:textSize="20dp"/>
 
+                <ImageButton
+                    android:id="@+id/botao_confirmar"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="16dp"
+                    android:layout_marginRight="16dp"
+                    android:layout_marginTop="16dp"
+                    android:layout_weight="1"
+                    android:background="@color/android.corPrimaria"
+                    android:src="@drawable/ic_check_circle_white_36dp"/>
+               </LinearLayout>
 
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:src="@drawable/ic_person_white_48dp"
+                android:id="@+id/imageView"/>
 
         </LinearLayout>
-
-        <LinearLayout
-            android:id="@+id/layout_horizontal_usuario"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:layout_alignParentTop="true"
-            android:layout_alignParentStart="true">
-
-
-            <ImageButton
-                android:id="@+id/botao_voltar"
-                android:layout_width="44dp"
-                android:layout_height="wrap_content"
-                android:padding="16dp"
-                android:layout_margin="16dp"
-                android:onClick="onClick"
-                android:background="@color/android.corPrimaria"
-                android:src="@drawable/ic_keyboard_backspace_white_36dp"/>
-
-            <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_margin="16dp"
-            android:padding="16dp"
-            android:text="Editar Conta"
-            android:layout_gravity="center"
-            android:textSize="24dp"
-            android:gravity="center"
-            android:textColor="@color/android.branco"
-
-            android:id="@+id/textView2"/>
-
-            <ImageButton
-                android:id="@+id/botao_confirmar"
-                android:padding="16dp"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:background="@color/android.corPrimaria"
-                android:layout_margin="16dp"
-                android:src="@drawable/ic_check_circle_white_36dp"/>
-
-        </LinearLayout>
-
-
     </RelativeLayout>
 
     <LinearLayout

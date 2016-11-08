@@ -9,7 +9,7 @@
     android:layout_marginLeft="16dp"
     android:layout_marginRight="16dp"
     android:orientation="vertical"
-    tools:context="com.tel.gleisson.android.tel.LoginActivity">
+    tools:context="com.tel.gleisson.android.tel.activity.LoginActivity">
 
 
 

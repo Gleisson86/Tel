@@ -1,0 +1,210 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+
+<android.support.design.widget.CoordinatorLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.tel.gleisson.android.tel.activity.EditarContaActivity">
+
+
+    <LinearLayout
+        android:id="@+id/activity_conta_usuario_activity"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:id="@+id/layout_horizontal_usuario"
+            android:layout_width="match_parent"
+            android:layout_height="61dp"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:background="@color/android.corPrimaria"
+            android:orientation="horizontal">
+
+
+            <ImageButton
+                android:id="@+id/botao_voltar_solucao"
+                android:layout_width="0dp"
+                android:layout_height="30dp"
+                android:layout_marginBottom="16dp"
+                android:layout_marginLeft="16dp"
+                android:layout_marginTop="16dp"
+                android:layout_weight="0.87"
+                android:background="@color/android.corPrimaria"
+                android:padding="8dp"
+                android:src="@drawable/ic_keyboard_backspace_white_36dp"/>
+
+            <TextView
+                android:id="@+id/textView2"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_margin="8dp"
+                android:layout_weight="4"
+                android:gravity="center"
+                android:text="Nova solução"
+                android:textColor="@color/android.branco"
+                android:textSize="20dp"/>
+
+            <ImageButton
+                android:id="@+id/botao_confirmar_solucao"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="16dp"
+                android:layout_marginRight="16dp"
+                android:layout_marginTop="16dp"
+                android:layout_weight="1"
+                android:background="@color/android.corPrimaria"
+                android:src="@drawable/ic_check_circle_white_36dp"/>
+        </LinearLayout>
+
+        <android.support.v4.widget.NestedScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginBottom="@dimen/md_keylines">
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_margin="16dp"
+                android:orientation="vertical">
+
+
+                <android.support.design.widget.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="@dimen/md_keylines">
+
+                    <EditText
+                        android:id="@+id/tituloSolucao"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="@string/TituloSolucao"
+                        android:inputType="textNoSuggestions"
+                        android:textColorHint="@color/android.preto"
+                        android:textSize="@dimen/article_titles"/>
+                </android.support.design.widget.TextInputLayout>
+
+                <android.support.design.widget.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="@dimen/md_keylines">
+
+                    <EditText
+                        android:id="@+id/palavraChaveSolucao"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:hint="@string/palavraChave"
+                        android:inputType="textNoSuggestions"
+                        android:textColorHint="@color/android.preto"
+                        android:textSize="@dimen/article_titles"/>
+                </android.support.design.widget.TextInputLayout>
+
+
+                <android.support.design.widget.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="@dimen/md_keylines">
+
+                    <EditText
+                        android:id="@+id/tipoSolucao"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:hint="@string/tipoSolucao"
+                        android:inputType="textMultiLine"
+                        android:textColorHint="@color/android.preto"
+                        android:textSize="@dimen/article_titles"/>
+
+                </android.support.design.widget.TextInputLayout>
+
+
+                <android.support.design.widget.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="@dimen/md_keylines">
+
+                    <EditText
+                        android:id="@+id/descricaoSolucao"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="@string/solucao"
+                        android:gravity="top|left"
+                        android:inputType="textMultiLine"
+                        android:scrollHorizontally="false"
+                        android:textColorHint="@color/android.preto"
+                        android:textSize="@dimen/article_titles"
+                        />
+
+                </android.support.design.widget.TextInputLayout>
+
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="51dp"
+                    android:orientation="horizontal"
+                    android:layout_margin="16dp" >
+
+                    <ImageView
+                        android:id="@+id/image1Solucao"
+                        android:layout_width="0dp"
+                        android:layout_height="50dp"
+                        android:layout_weight="1"
+                        android:layout_margin="2dp"
+                        android:src="@drawable/ic_pastafotos"/>
+
+                    <ImageView
+                        android:id="@+id/image2Solucao"
+                        android:layout_width="0dp"
+                        android:layout_height="50dp"
+                        android:layout_weight="1"
+                        android:layout_margin="2dp"
+                        android:src="@drawable/ic_pastafotos"/>
+
+                    <ImageView
+                        android:id="@+id/image3Solucao"
+                        android:layout_width="0dp"
+                        android:layout_height="50dp"
+                        android:layout_weight="1"
+                        android:layout_margin="2dp"
+                        android:src="@drawable/ic_pastafotos"/>
+
+                    <ImageView
+                        android:id="@+id/image4Solucao"
+                        android:layout_width="0dp"
+                        android:layout_height="50dp"
+                        android:layout_weight="1"
+                        android:layout_margin="2dp"
+                        android:src="@drawable/ic_pastafotos"/>
+
+                    <ImageView
+                        android:id="@+id/image5Solucao"
+                        android:layout_width="0dp"
+                        android:layout_height="50dp"
+                        android:layout_weight="1"
+                        android:layout_margin="2dp"
+                        android:src="@drawable/ic_pastafotos"/>
+
+                    <ImageButton
+                        android:id="@+id/botao_add_foto_CameraOuGaleria"
+                        android:layout_width="0dp"
+                        android:layout_height="50dp"
+                        android:layout_weight="1.5"
+                        style="?android:attr/borderlessButtonStyle"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginBottom="8dp"
+                        app:srcCompat="@mipmap/add_foto"/>
+
+
+                </LinearLayout>
+
+            </LinearLayout>
+        </android.support.v4.widget.NestedScrollView>
+
+    </LinearLayout>
+</android.support.design.widget.CoordinatorLayout>
