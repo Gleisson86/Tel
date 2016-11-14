@@ -46,7 +46,7 @@ public class Infra_fragment extends Fragment {
 
 
         public ViewHolder(LayoutInflater inflater, ViewGroup parent) {
-            super(inflater.inflate(R.layout.equipamento_card, parent, false));
+            super(inflater.inflate(R.layout.solucoes_card, parent, false));
             picture = (ImageView) itemView.findViewById(R.id.imagem_card);
             name = (TextView) itemView.findViewById(R.id.titulo_card);
             description = (TextView) itemView.findViewById(R.id.texto_card);

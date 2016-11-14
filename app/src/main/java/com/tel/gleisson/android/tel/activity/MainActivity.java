@@ -34,7 +34,7 @@ import java.util.List;
 import io.fabric.sdk.android.Fabric;
 
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity  {
 
     private PrefManager prefManager;
     private FirebaseAuth auth;
@@ -60,9 +60,6 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.tela_inicial_activity);
 
 
-
-        //  sair = (Button) findViewById(R.id.sair);
-        //   deletarConta = (Button) findViewById(R.id.deletarConta);
         user = FirebaseAuth.getInstance().getCurrentUser();
 
         // Adding Toolbar to Main screen
@@ -170,7 +167,6 @@ public class MainActivity extends AppCompatActivity {
             mFragmentList.add(fragment);
             mFragmentTitleList.add(title);
         }
-
         @Override
         public CharSequence getPageTitle(int position) {
             return mFragmentTitleList.get(position);

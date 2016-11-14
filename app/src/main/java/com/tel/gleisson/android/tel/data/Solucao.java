@@ -9,7 +9,11 @@ import android.net.Uri;
 
 public interface Solucao {
 
-    Boolean upLoadSolucao(Uri uri);
+    void upLoadSolucao(String id, String nome, String titulo, String palavraChave, String tipoSolucao, String descricao, Uri uri);
+
+    void updateSolucao(String id, String nome, String titulo, String palavraChave, String tipoSolucao, String descricao, String uri);
+
+    void upLoadImagem (Uri uri);
 
     Boolean deleteSolucao();
 

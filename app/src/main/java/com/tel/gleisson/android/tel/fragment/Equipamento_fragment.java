@@ -22,7 +22,10 @@ import com.tel.gleisson.android.tel.activity.DetalheCardActivity;
  * Created by Gleisson e Rosy on 24/10/2016.
  */
 
-public class Equipamento_fragment extends Fragment {
+public class Equipamento_fragment extends Fragment{
+
+
+//private Firebase RefSolucao = new Firebase("https://apptel-84297.firebaseio.com/");
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -34,6 +37,7 @@ public class Equipamento_fragment extends Fragment {
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
 
         return recyclerView;
+
     }
 
 
@@ -46,7 +50,7 @@ public class Equipamento_fragment extends Fragment {
 
 
         public ViewHolder(LayoutInflater inflater, ViewGroup parent) {
-            super(inflater.inflate(R.layout.equipamento_card, parent, false));
+            super(inflater.inflate(R.layout.solucoes_card, parent, false));
             picture = (ImageView) itemView.findViewById(R.id.imagem_card);
             name = (TextView) itemView.findViewById(R.id.titulo_card);
             description = (TextView) itemView.findViewById(R.id.texto_card);

@@ -28,7 +28,7 @@ public class Acesso_fragment extends Fragment {
     public View onCreateView (LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
         RecyclerView recyclerView = (RecyclerView) inflater.inflate(R.layout.recycler_view, container, false);
-       ContentAdapter adapter = new ContentAdapter(recyclerView.getContext());
+        ContentAdapter adapter = new ContentAdapter(recyclerView.getContext());
         recyclerView.setAdapter(adapter);
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
@@ -47,7 +47,7 @@ public class Acesso_fragment extends Fragment {
 
 
         public ViewHolder(LayoutInflater inflater, ViewGroup parent) {
-            super(inflater.inflate(R.layout.equipamento_card, parent, false));
+            super(inflater.inflate(R.layout.solucoes_card, parent, false));
             picture = (ImageView) itemView.findViewById(R.id.imagem_card);
             name = (TextView) itemView.findViewById(R.id.titulo_card);
             description = (TextView) itemView.findViewById(R.id.texto_card);

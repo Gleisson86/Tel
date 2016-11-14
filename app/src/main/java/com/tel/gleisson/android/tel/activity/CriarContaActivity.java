@@ -27,6 +27,9 @@ import com.tel.gleisson.android.tel.util.ClasseUtil;
  * Created by Gleisson e Rosy on 14/10/2016.
  */
 
+
+
+
 public class CriarContaActivity extends AppCompatActivity implements View.OnClickListener {
 
     //defining view objects
@@ -51,7 +54,7 @@ public class CriarContaActivity extends AppCompatActivity implements View.OnClic
         super.onCreate(savedInstanceState);
         setContentView(R.layout.criar_conta);
 
-
+        classeUtil = new ClasseUtil(this);
         firebaseAuth = FirebaseAuth.getInstance();
         mDatabase = FirebaseDatabase.getInstance().getReference();
 
@@ -78,7 +81,7 @@ public class CriarContaActivity extends AppCompatActivity implements View.OnClic
         String nome = editTextNome.getText().toString().trim();
         String email = editTextEmail.getText().toString().trim();
         String password = editTextPassword.getText().toString().trim();
-        classeUtil = new ClasseUtil(this);
+
 
         if (TextUtils.isEmpty(nome)) {
             classeUtil.chamaDialogo(getString(R.string.nomeCompletoVazio), getString(R.string.tentenovamente));

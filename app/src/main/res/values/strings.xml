@@ -21,9 +21,16 @@
         mais chance terá de ficar popular
         na comunidade de telecomunicações.
     </string>
+
+
+
+    <string name="palavraChaveVazio">Campo Palavra Chave Vazio!</string>
+    <string name="descricaoVazio">Campo Descrição vazio!</string>
+    <string name="tituloVazio">Campo Titulo vazio!</string>
+    <string name="tiposolucaoVazio">Campo Tipo da Solução vazio!</string>
+    <string name="tiposolucao">Tipo da Solucao</string>
     <string name="usuarioNull">Nenhum Usuario logado</string>
     <string name="diretorio">Tel</string>
-    <string name="tipoSolucao">Tipo da Solução</string>
     <string name="numeroCurtidas">2.254</string>
     <string name="numeroNaoCurtidas">231</string>
     <string name="texto_da_solucao">Area para escrita da solução</string>
