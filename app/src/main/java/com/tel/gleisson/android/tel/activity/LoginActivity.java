@@ -23,8 +23,11 @@ public class LoginActivity extends AppCompatActivity {
     private FirebaseAuth auth;
     private Button btnSignup, btnLogin, btnReset;
 
+
+
+
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(final Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
         //Get Firebase auth instance
@@ -43,6 +46,7 @@ public class LoginActivity extends AppCompatActivity {
         btnSignup = (Button) findViewById(R.id.cria_conta);
         btnLogin = (Button) findViewById(R.id.btn_login);
         btnReset = (Button) findViewById(R.id.botao_reset_senha_login);
+
 
 
         btnReset.setOnClickListener(new View.OnClickListener() {
@@ -109,7 +113,6 @@ public class LoginActivity extends AppCompatActivity {
                                     Intent intent = new Intent(LoginActivity.this, MainActivity.class);
                                     startActivity(intent);
                                     finish();
-
 
                                 } else {
                                     classeUtil.chamaDialogo(getString(R.string.falhaAutenticacaoTitulo),getString(R.string.falhaAutenticacaoMensagem));

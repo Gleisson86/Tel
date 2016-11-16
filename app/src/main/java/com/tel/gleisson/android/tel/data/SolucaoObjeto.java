@@ -49,5 +49,67 @@ public class SolucaoObjeto {
         return result;
     }
 
+    public String getId() {
+        return id;
+    }
 
+    public void setId(String id) {
+        this.id = id;
+    }
+
+    public String getNome() {
+        return nome;
+    }
+
+    public void setNome(String nome) {
+        this.nome = nome;
+    }
+
+    public String getTitulo() {
+        return titulo;
+    }
+
+    public void setTitulo(String titulo) {
+        this.titulo = titulo;
+    }
+
+    public String getPalavraChave() {
+        return palavraChave;
+    }
+
+    public void setPalavraChave(String palavraChave) {
+        this.palavraChave = palavraChave;
+    }
+
+    public String getTipoSolucao() {
+        return tipoSolucao;
+    }
+
+    public void setTipoSolucao(String tipoSolucao) {
+        this.tipoSolucao = tipoSolucao;
+    }
+
+    public String getDescricao() {
+        return descricao;
+    }
+
+    public void setDescricao(String descricao) {
+        this.descricao = descricao;
+    }
+
+    public String getUri() {
+        return uri;
+    }
+
+    public void setUri(String uri) {
+        this.uri = uri;
+    }
+
+    public Map<String, Boolean> getStars() {
+        return stars;
+    }
+
+    public void setStars(Map<String, Boolean> stars) {
+        this.stars = stars;
+    }
 }

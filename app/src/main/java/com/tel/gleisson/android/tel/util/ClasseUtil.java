@@ -5,6 +5,8 @@ import android.content.Context;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 
+import com.tel.gleisson.android.tel.R;
+
 
 /**
  * Created by Gleisson 21/10/2016.
@@ -22,7 +24,7 @@ public class ClasseUtil extends AppCompatActivity {
 
     public ClasseUtil(Context context) {
 
-        builder = new AlertDialog.Builder(context);
+        builder = new AlertDialog.Builder(context, R.style.AlertaPadraoTel);
         progressDialog = new ProgressDialog(context);
         this.contexto = context;
     }

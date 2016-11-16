@@ -23,6 +23,7 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.firebase.client.Firebase;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
@@ -33,6 +34,7 @@ import com.tel.gleisson.android.tel.R;
 import com.tel.gleisson.android.tel.data.ImplementaSolucao;
 import com.tel.gleisson.android.tel.util.ClasseUtil;
 import com.tel.gleisson.android.tel.util.MarshMallowPermissao;
+import com.tel.gleisson.android.tel.util.SingletonFirebase;
 
 import java.io.ByteArrayOutputStream;
 import java.io.File;
@@ -66,15 +68,16 @@ public class CriarNovoCardSolucao_Activity extends AppCompatActivity implements 
     private EditText palavraChave;
     private EditText descricao;
     private ImageView image1solucao;
-    private ImageView image2solucao;
-    private ImageView image3solucao;
-    private ImageView image4solucao;
-    private ImageView image5solucao;
     private Spinner tipoSolucao;
     private Uri fileUri; // file url to store image/video
     private AlertDialog.Builder builder;
     private StorageReference StorageRef;
     private DatabaseReference mDatabase;
+    private Firebase firebase;
+    private SingletonFirebase singletonFirebase;
+    private String  nomeUsuarioSolucao;
+    private FirebaseUser usuario;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -96,6 +99,13 @@ public class CriarNovoCardSolucao_Activity extends AppCompatActivity implements 
         botaoConfirmarSolucao = (ImageButton) findViewById(R.id.botao_confirmar_solucao);
         mDatabase = FirebaseDatabase.getInstance().getReference();
         classeUtil = new ClasseUtil(this);
+        usuario = FirebaseAuth.getInstance().getCurrentUser();
+        singletonFirebase = new SingletonFirebase();
+
+
+
+
+
 
 
         //--------------ABRE ADAPTER QUE CRIAR O SPINNER NO LAYOUT
@@ -258,7 +268,6 @@ public class CriarNovoCardSolucao_Activity extends AppCompatActivity implements 
                 }
 
          /*       if (password.length()<6) {
-
                     classeUtil.chamaDialogo(getString(R.string.senhaCurtaTitulo),getString(R.string.senhaCurtaMensagem));
                     //Toast.makeText(getApplicationContext(), getString(R.string.minimum_password), Toast.LENGTH_SHORT).show();
                     return;
@@ -272,13 +281,23 @@ public class CriarNovoCardSolucao_Activity extends AppCompatActivity implements 
 
     public void adpterNovaSolucao(FirebaseUser user) {
 
-      //  Solucao implementaSolucao = new ImplementaSolucao(this);
+        //  Solucao implementaSolucao = new ImplementaSolucao(this);
         String tituloSolucao = titulo.getText().toString().trim();
         String palavraChaveSolucao = palavraChave.getText().toString().trim();
         String descricaoDaSolucao = descricao.getText().toString().trim();
 
         TextView textView = (TextView) tipoSolucao.getSelectedView();
         tipoSolucaoAdapter = textView.getText().toString();
+        // mDatabase.child("users").child(user.getUid());
+
+      //  firebase.setAndroidContext(this);
+     //   if(auth.getCurrentUser() != null)
+     //       firebase = new Firebase("https://apptel-84297.firebaseio.com").child("users").child(user.getUid());
+
+    //    singletonFirebase = new SingletonFirebase();
+     //   firebase.addValueEventListener(singletonFirebase);
+
+
         String nome = "Gleisson";
 
         implementaSolucao.upLoadSolucao(user.getUid(), nome, tituloSolucao, palavraChaveSolucao
@@ -300,14 +319,14 @@ public class CriarNovoCardSolucao_Activity extends AppCompatActivity implements 
         // if the result is capturing Image
         if (resultCode == RESULT_OK) {
             if (requestCode == CAMERA_CAPTURE_IMAGE_REQUEST_CODE) {
-            //    retornoUpImagemOK =  implementaSolucao.upLoadImagem(fileUri);
-               previewCapturedImage(fileUri);
-             //   Toast.makeText(CriarNovoCardSolucao_Activity.this, "", Toast.LENGTH_LONG).show();
+                //    retornoUpImagemOK =  implementaSolucao.upLoadImagem(fileUri);
+                previewCapturedImage(fileUri);
+                //   Toast.makeText(CriarNovoCardSolucao_Activity.this, "", Toast.LENGTH_LONG).show();
 
             }
             if (requestCode == INTENT_GALERIA) {
                 fileUri = data.getData();
-               // retornoUpImagemOK =  implementaSolucao.upLoadImagem( uriIImagemSalva);
+                // retornoUpImagemOK =  implementaSolucao.upLoadImagem( uriIImagemSalva);
                 previewCapturedImage(fileUri);
 
               /*
@@ -320,7 +339,6 @@ public class CriarNovoCardSolucao_Activity extends AppCompatActivity implements 
                         previewCapturedImage(uriIImagemSalva);
                     }
                 });
-
                 */
             }
         } else if (resultCode == RESULT_CANCELED) {
@@ -348,7 +366,7 @@ public class CriarNovoCardSolucao_Activity extends AppCompatActivity implements 
         }
         ByteArrayOutputStream baos = new ByteArrayOutputStream();
         bm.compress(Bitmap.CompressFormat.JPEG, 100, baos);
-      //  String imageEncoded = Base64.encodeToString(baos.toByteArray(), Base64.DEFAULT);
+        //  String imageEncoded = Base64.encodeToString(baos.toByteArray(), Base64.DEFAULT);
         byte[] data = baos.toByteArray();
         return data;
     }
@@ -364,7 +382,7 @@ public class CriarNovoCardSolucao_Activity extends AppCompatActivity implements 
             e.printStackTrace();
         }
         image1solucao.setImageBitmap(bm);
-        }
+    }
 
 
     //---------------FECHA PREVIEW IMAGEM NA TELA DE CADATRO DE SOLUÇÃO------------

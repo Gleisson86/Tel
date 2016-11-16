@@ -1,0 +1,15 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+      xmlns:app="http://schemas.android.com/apk/res-auto"
+      xmlns:tools="http://schemas.android.com/tools"
+      tools:context=".activity.TelaProfileUsuarioActivity">
+
+<!-- "Mark Favorite", should appear as action button if possible -->
+<item
+    android:id="@+id/edit_conta_menu_profile"
+    android:icon="@drawable/editar_conta"
+    android:title="@string/conta"
+    app:showAsAction="ifRoom"/>
+
+<!-- Settings, should always be in the overflow -->
+
+</menu>

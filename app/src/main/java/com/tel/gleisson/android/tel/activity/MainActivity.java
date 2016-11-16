@@ -19,6 +19,7 @@ import android.view.View;
 import android.widget.Button;
 
 import com.crashlytics.android.Crashlytics;
+import com.firebase.client.Firebase;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.tel.gleisson.android.tel.R;
@@ -27,6 +28,7 @@ import com.tel.gleisson.android.tel.fragment.Equipamento_fragment;
 import com.tel.gleisson.android.tel.fragment.Infra_fragment;
 import com.tel.gleisson.android.tel.util.ClasseUtil;
 import com.tel.gleisson.android.tel.util.PrefManager;
+import com.tel.gleisson.android.tel.util.SingletonFirebase;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -41,9 +43,10 @@ public class MainActivity extends AppCompatActivity  {
     private ClasseUtil classeUtil;
     private FirebaseUser user;
     FloatingActionButton fab;
-
     private Button sair;
     private Button deletarConta;
+    private SingletonFirebase singletonFirebase;
+    private Firebase firebase;
 
     //  SharedPreference regra para viu ou não viu a intro. Dentro da on create e também
     // no onResume.
@@ -57,10 +60,11 @@ public class MainActivity extends AppCompatActivity  {
         auth = FirebaseAuth.getInstance();
         prefManager = new PrefManager(this);
         classeUtil = new ClasseUtil(this);
+
         setContentView(R.layout.tela_inicial_activity);
-
-
         user = FirebaseAuth.getInstance().getCurrentUser();
+
+
 
         // Adding Toolbar to Main screen
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
@@ -90,6 +94,8 @@ public class MainActivity extends AppCompatActivity  {
         }
     }
 
+
+
     private void setupViewPager(ViewPager viewPager) {
         Adapter adapter = new Adapter(getSupportFragmentManager());
         adapter.addFragment(new Equipamento_fragment(),"Equipamento");
@@ -97,6 +103,8 @@ public class MainActivity extends AppCompatActivity  {
         adapter.addFragment(new Infra_fragment(),"Infra");
         viewPager.setAdapter(adapter);
     }
+
+
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -114,6 +122,8 @@ public class MainActivity extends AppCompatActivity  {
         startActivity(new Intent(MainActivity.this, IntroActivity.class));
         finish();
     }
+
+
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
@@ -138,14 +148,15 @@ public class MainActivity extends AppCompatActivity  {
     @Override
     protected void onResume() {
         super.onResume();
-
         if (auth.getCurrentUser() == null) {
             startActivity(new Intent(MainActivity.this, LoginActivity.class));
-
         }
+       // inicio();
     }
 
-    static class Adapter extends FragmentPagerAdapter {
+
+    static class Adapter extends FragmentPagerAdapter{
+
         private final List<Fragment> mFragmentList = new ArrayList<>();
         private final List<String> mFragmentTitleList = new ArrayList<>();
 

@@ -1,10 +1,5 @@
 package com.tel.gleisson.android.tel.fragment;
 
-import android.content.Context;
-import android.content.Intent;
-import android.content.res.Resources;
-import android.content.res.TypedArray;
-import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
@@ -12,11 +7,13 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
-import android.widget.TextView;
 
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 import com.tel.gleisson.android.tel.R;
-import com.tel.gleisson.android.tel.activity.DetalheCardActivity;
+import com.tel.gleisson.android.tel.data.AdapterRecuperaSolucao;
+import com.tel.gleisson.android.tel.data.SolucaoObjeto;
+import com.tel.gleisson.android.tel.data.ViewHolderRecuperaSolucao;
 
 /**
  * Created by Gleisson e Rosy on 27/10/2016.
@@ -24,36 +21,50 @@ import com.tel.gleisson.android.tel.activity.DetalheCardActivity;
 
 public class Infra_fragment extends Fragment {
 
+    private DatabaseReference mDatareferencia;
+    private AdapterRecuperaSolucao adapter;
+    private DatabaseReference RefSolucao;
+
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
+        mDatareferencia = FirebaseDatabase.getInstance().getReference().child("Soluções").child("Infraestrutura");
         RecyclerView recyclerView = (RecyclerView) inflater.inflate(R.layout.recycler_view, container, false);
-        ContentAdapter adapter = new ContentAdapter(recyclerView.getContext());
+        //   RefSolucao = mDatareferencia.child ("https://apptel-84297.firebaseio.com/").child("Soluções").child("Equipamento");
+        //  ContentAdapter adapter = new ContentAdapter(recyclerView.getContext());
+
+        adapter = new AdapterRecuperaSolucao(SolucaoObjeto.class,R.layout.solucoes_card, ViewHolderRecuperaSolucao.class, mDatareferencia);
         recyclerView.setAdapter(adapter);
+
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
 
         return recyclerView;
+
+
     }
 
-
-    //--------------------------INICIO ViewFolder---------------------------------//
+     /*
+    //--------------------------INICIO ViewHolder---------------------------------//
     public static class ViewHolder extends RecyclerView.ViewHolder {
 
         public ImageView picture;
         public TextView name;
-        public TextView description;
+        public TextView titulo;
+        //   public TextView description;
 
 
         public ViewHolder(LayoutInflater inflater, ViewGroup parent) {
             super(inflater.inflate(R.layout.solucoes_card, parent, false));
             picture = (ImageView) itemView.findViewById(R.id.imagem_card);
-            name = (TextView) itemView.findViewById(R.id.titulo_card);
-            description = (TextView) itemView.findViewById(R.id.texto_card);
+            name = (TextView) itemView.findViewById(R.id.titular_da_solucao);
+            titulo = (TextView) itemView.findViewById(R.id.titulo_card);
+            //  description = (TextView) itemView.findViewById(R.id.texto_card);
 
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
-                public void onClick(View v) {
+                public void onClick(View v){
                     Context context = v.getContext();
                     Intent intent = new Intent(context, DetalheCardActivity.class);
                     intent.putExtra(DetalheCardActivity.EXTRA_POSITION, getAdapterPosition());
@@ -62,52 +73,54 @@ public class Infra_fragment extends Fragment {
             });
         }
     }
-        //--------------------------FIM ViewFolder---------------------------------//
+    //--------------------------FIM ViewFolder---------------------------------//
 
 
-        //--------------------------INICIO ContentAdapter---------------------------------//
+    //--------------------------INICIO ContentAdapter---------------------------------//
+    /**
+     * Adapter to display recycler view.
 
-        /**
-         * Adapter to display recycler view.
-         */
-        public static class ContentAdapter extends RecyclerView.Adapter<Equipamento_fragment.ViewHolder> {
-            // Set numbers of List in RecyclerView.
-            private static final int LENGTH = 18;
-            private final String[] mPlaces;
-            private final String[] mPlaceDesc;
-            private final Drawable[] mPlacePictures;
+    public static class ContentAdapter extends RecyclerView.Adapter<Acesso_fragment.ViewHolder> {
+        // Set numbers of List in RecyclerView.
+        private static final int LENGTH = 18;
+        private final String[] mPlaces;
+        private final String[] mPlaceDesc;
+        private final Drawable[] mPlacePictures;
 
-            public ContentAdapter(Context context) {
-                Resources resources = context.getResources();
-                mPlaces = resources.getStringArray(R.array.places);
-                mPlaceDesc = resources.getStringArray(R.array.place_desc);
-                TypedArray a = resources.obtainTypedArray(R.array.places_picture);
-                mPlacePictures = new Drawable[a.length()];
-                for (int i = 0; i < mPlacePictures.length; i++) {
-                    mPlacePictures[i] = a.getDrawable(i);
-                }
-                a.recycle();
+        public ContentAdapter(Context context) {
+            Resources resources = context.getResources();
+            mPlaces = resources.getStringArray(R.array.places);
+            mPlaceDesc = resources.getStringArray(R.array.place_desc);
+            TypedArray a = resources.obtainTypedArray(R.array.places_picture);
+            mPlacePictures = new Drawable[a.length()];
+            for (int i = 0; i < mPlacePictures.length; i++) {
+                mPlacePictures[i] = a.getDrawable(i);
             }
-
-            @Override
-            public Equipamento_fragment.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-                return new Equipamento_fragment.ViewHolder(LayoutInflater.from(parent.getContext()), parent);
-            }
-
-            @Override
-            public void onBindViewHolder(Equipamento_fragment.ViewHolder holder, int position) {
-
-                holder.picture.setImageDrawable(mPlacePictures[position % mPlacePictures.length]);
-                holder.name.setText(mPlaces[position % mPlaces.length]);
-                holder.description.setText(mPlaceDesc[position % mPlaceDesc.length]);
-            }
-
-            @Override
-            public int getItemCount() {
-                return LENGTH;
-            }
+            a.recycle();
         }
-        //--------------------------FIM ContentAdapter---------------------------------//
 
+        @Override
+        public Acesso_fragment.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+            return new Acesso_fragment.ViewHolder(LayoutInflater.from(parent.getContext()), parent);
+        }
+
+        @Override
+        public void onBindViewHolder(Acesso_fragment.ViewHolder holder, int position) {
+
+            holder.picture.setImageDrawable(mPlacePictures[position % mPlacePictures.length]);
+            holder.name.setText(mPlaces[position % mPlaces.length]);
+            holder.titulo.setText(mPlaceDesc[position % mPlaceDesc.length]);
+        }
+
+        @Override
+        public int getItemCount() {
+            return LENGTH;
+        }
+    }
+
+    //--------------------------FIM ContentAdapter---------------------------------//
+
+
+
+    */
 }
-

@@ -1,5 +1,6 @@
 package com.tel.gleisson.android.tel.activity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
@@ -18,16 +19,21 @@ public class EditarContaActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.editar_conta_usuario_activity);
 
-
-
         botao_voltar = (ImageButton) findViewById(R.id.botao_voltar);
         botao_confirmar = (ImageButton) findViewById(R.id.botao_confirmar);
 
 
         botao_voltar.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v) {finish();
+            public void onClick(View v) {
+
+                startActivity(new Intent(EditarContaActivity.this, TelaProfileUsuarioActivity.class));
+                finish();
             }
         });
+
+
+
+
     }
 }

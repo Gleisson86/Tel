@@ -39,7 +39,7 @@
         <activity
             android:name=".activity.ResetPasswordActivity"
             android:parentActivityName=".activity.LoginActivity"
-            android:theme="@style/Intro.ActionBar">
+            android:theme="@style/Intro.NoActionBar">
         </activity>
         <activity
             android:name=".activity.EditarContaActivity"
@@ -48,7 +48,7 @@
         <activity
             android:name=".activity.CriarContaActivity"
             android:parentActivityName=".activity.LoginActivity"
-            android:theme="@style/Intro.ActionBar"/>
+            android:theme="@style/Intro.NoActionBar"/>
         <activity
             android:name=".activity.LoginActivity"
             android:theme="@style/Intro.NoActionBar"/>
@@ -72,7 +72,8 @@
 
         <activity
             android:name=".activity.TelaProfileUsuarioActivity"
-            android:theme="@style/Intro.Main">
+            android:parentActivityName=".activity.MainActivity"
+            android:theme="@style/Intro.DetalheCardNoTitle">
         </activity>
     </application>
 

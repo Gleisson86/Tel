@@ -25,37 +25,55 @@
             tools:src="@drawable/a"/>
 
         <TextView
+
             android:id="@+id/titulo_card"
-            android:layout_width="match_parent"
-            android:layout_height="@dimen/card_title_height"
-            android:layout_above="@+id/texto_card"
-            android:layout_alignParentEnd="true"
-            android:layout_marginLeft="@dimen/md_keylines"
-            android:textAppearance="@style/TextAppearance.AppCompat.Title"
-            android:textColor="@color/white"
-            tools:text="@string/item_title"/>
-
-        <TextView
-
-            android:id="@+id/texto_card"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@+id/imagem_card"
             android:layout_centerHorizontal="true"
             android:layout_marginLeft="@dimen/md_keylines"
             android:layout_marginRight="@dimen/md_keylines"
-            android:layout_marginTop="14dp"
+            android:layout_marginTop="6dp"
             android:ellipsize="end"
             android:singleLine="true"
             android:textColor="@color/android.preto"
             android:textSize="@dimen/article_subheading"
             tools:text="@string/item_desc"/>
 
+
+        <TextView
+            android:id="@+id/por"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/layout_curtir"
+            android:layout_toLeftOf="@+id/titular_da_solucao"
+            android:layout_marginLeft="@dimen/md_keylines"
+            android:layout_marginTop="2dp"
+            android:textColor="@color/android.cinzaEscuro"
+            android:text="Por "
+            />
+
+
+        <TextView
+
+            android:id="@+id/titular_da_solucao"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/layout_curtir"
+            android:layout_marginLeft="@dimen/espaco_de_4"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="@dimen/md_keylines"
+            android:layout_marginTop="2dp"
+            android:textColor="@color/android.preto"
+            android:text="Gleisson Nascimento "
+            />
+
         <LinearLayout
+            android:id="@+id/layout_curtir"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            android:layout_below="@+id/texto_card"
+            android:layout_below="@+id/titulo_card"
             android:layout_alignParentStart="true">
 
 
@@ -64,26 +82,26 @@
                 style="?android:attr/borderlessButtonStyle"
                 android:layout_width="0dp"
                 android:layout_height="@dimen/cards_button_height"
+                android:layout_marginTop="4dp"
                 android:layout_weight="1"
-                android:layout_marginTop="8dp"
                 app:srcCompat="@mipmap/curtir_paddin15"/>
 
             <TextView
                 android:id="@+id/numero_curtidas"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="25dp"
                 android:layout_weight="1"
                 android:text="@string/numeroCurtidas"
-                android:textColor="@color/android.preto"
-                android:layout_marginTop="25dp"/>
+                android:textColor="@color/android.preto"/>
 
             <ImageButton
                 android:id="@+id/button_nao_curtir"
                 style="?android:attr/borderlessButtonStyle"
                 android:layout_width="0dp"
                 android:layout_height="@dimen/cards_button_height"
+                android:layout_marginTop="4dp"
                 android:layout_weight="1"
-                android:layout_marginTop="8dp"
                 app:srcCompat="@mipmap/nao_curtir_padding15"/>
 
 
@@ -91,8 +109,8 @@
                 android:id="@+id/text_nao_curtir"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
                 android:layout_marginTop="25dp"
+                android:layout_weight="1"
                 android:text="@string/numeroNaoCurtidas"
                 android:textColor="@color/android.preto"/>
 

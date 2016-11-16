@@ -1,10 +1,5 @@
 package com.tel.gleisson.android.tel.fragment;
 
-import android.content.Context;
-import android.content.Intent;
-import android.content.res.Resources;
-import android.content.res.TypedArray;
-import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
@@ -12,11 +7,13 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
-import android.widget.TextView;
 
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 import com.tel.gleisson.android.tel.R;
-import com.tel.gleisson.android.tel.activity.DetalheCardActivity;
+import com.tel.gleisson.android.tel.data.AdapterRecuperaSolucao;
+import com.tel.gleisson.android.tel.data.SolucaoObjeto;
+import com.tel.gleisson.android.tel.data.ViewHolderRecuperaSolucao;
 
 /**
  * Created by Gleisson e Rosy on 24/10/2016.
@@ -25,14 +22,22 @@ import com.tel.gleisson.android.tel.activity.DetalheCardActivity;
 public class Equipamento_fragment extends Fragment{
 
 
-//private Firebase RefSolucao = new Firebase("https://apptel-84297.firebaseio.com/");
+    private DatabaseReference mDatareferencia;
+    private AdapterRecuperaSolucao adapter;
+    private DatabaseReference RefSolucao;
+
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
+        mDatareferencia = FirebaseDatabase.getInstance().getReference().child("Soluções").child("Equipamento");
         RecyclerView recyclerView = (RecyclerView) inflater.inflate(R.layout.recycler_view, container, false);
-        ContentAdapter adapter = new ContentAdapter(recyclerView.getContext());
+     //   RefSolucao = mDatareferencia.child ("https://apptel-84297.firebaseio.com/").child("Soluções").child("Equipamento");
+      //  ContentAdapter adapter = new ContentAdapter(recyclerView.getContext());
+
+        adapter = new AdapterRecuperaSolucao(SolucaoObjeto.class,R.layout.solucoes_card, ViewHolderRecuperaSolucao.class, mDatareferencia);
         recyclerView.setAdapter(adapter);
+
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
 
@@ -40,7 +45,7 @@ public class Equipamento_fragment extends Fragment{
 
     }
 
-
+/*
     //--------------------------INICIO ViewHolder---------------------------------//
     public static class ViewHolder extends RecyclerView.ViewHolder {
 
@@ -70,11 +75,26 @@ public class Equipamento_fragment extends Fragment{
     //--------------------------FIM ViewFolder---------------------------------//
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
     //--------------------------INICIO ContentAdapter---------------------------------//
 
     /**
      * Adapter to display recycler view.
      */
+/*
+
     public static class ContentAdapter extends RecyclerView.Adapter <ViewHolder> {
                 // Set numbers of List in RecyclerView.
                 private static final int LENGTH = 18;
@@ -111,5 +131,9 @@ public class Equipamento_fragment extends Fragment{
             return LENGTH;
         }
     }
+
+     */
+
+
     //--------------------------FIM ContentAdapter---------------------------------//
 }

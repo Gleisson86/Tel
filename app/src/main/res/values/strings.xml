@@ -70,6 +70,7 @@
     <string name="enviar_email_de_resetSenha"> Falha ao tentar enviar email de reset de senha! Check o email inserido!</string>
     <string name="email_registro_de_conta">Entre com o email que registrou sua conta!</string>
     <string name="esqueceu_senha_msg">Nós só precisamos do seu e-mail cadastrado para enviar-lhe instruções de redefinição de senha </string>
+    <string name="por">Por </string>
 
 
     <!-- Strings para o exemplo do Material design-->

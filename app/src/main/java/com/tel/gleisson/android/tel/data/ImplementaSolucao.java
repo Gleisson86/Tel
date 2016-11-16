@@ -32,6 +32,7 @@ public class ImplementaSolucao implements Solucao {
     private DatabaseReference mDatabase;
     String timeStamp = new SimpleDateFormat("ddMMyyyy_HHmmss").format(new Date());
     String retornoUpImagemOK = null;
+    private static String nomeUsuario = null;
 
     public ImplementaSolucao(Context context) {
         this.storage = FirebaseStorage.getInstance();
@@ -73,11 +74,9 @@ public class ImplementaSolucao implements Solucao {
     public void upLoadImagem(Uri uri) {
 
 
-
         imagesRef.putFile(uri).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
             @Override
-            public void onSuccess(TaskSnapshot taskSnapshot) {
-                retornoUpImagemOK = taskSnapshot.getDownloadUrl().toString();
+            public void onSuccess(TaskSnapshot taskSnapshot) {retornoUpImagemOK = taskSnapshot.getDownloadUrl().toString();
             }
         }).addOnFailureListener(new OnFailureListener() {
             @Override
@@ -86,6 +85,8 @@ public class ImplementaSolucao implements Solucao {
             }
         });
     }
+
+
 
 
     @Override
