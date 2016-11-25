@@ -23,7 +23,6 @@
     </string>
 
 
-
     <string name="palavraChaveVazio">Campo Palavra Chave Vazio!</string>
     <string name="descricaoVazio">Campo Descrição vazio!</string>
     <string name="tituloVazio">Campo Titulo vazio!</string>
@@ -52,6 +51,7 @@
     <string name="senhaCurtaMensagem">Senha deve conter no minimo 6 caractere</string>
     <string name="senhaCurtaTitulo">Senha muito curta</string>
     <string name="tentenovamente">Tente novamente</string>
+    <string name="estamosuploadImagem">Estamos salvando a imagem escolhida</string>
     <string name="senha_email_incorretoTitulo">Senha ou email incorreto!</string>
     <string name="entreComEmailMensagem">Campo email vazio!</string>
     <string name="entreComEmailRegistro">Entre com um endereço de email, ao qual irá registrar a conta!</string>
@@ -64,6 +64,7 @@
     <string name="falhaEnviarEmailResetTitulo">Falha!</string>
     <string name="falhaEnviarEmailResetMensagem">Certifique que o endereço de email foi digitado correto</string>
     <string name="falhaAutenticacaoTitulo">Falha na autênticação</string>
+    <string name="falhaAoSalvarImagem">Falha ao salvar imagem</string>
     <string name="falhaAutenticacaoMensagem">Verifique o endereço de email e senha digitado e tente novamente</string>
     <string name="esqueceu_a_senha">Esqueceu a senha?</string>
     <string name="emailEnviado_resetSenha">Enviamos um email com as instruções para o reset de sua senha!</string>
@@ -71,7 +72,13 @@
     <string name="email_registro_de_conta">Entre com o email que registrou sua conta!</string>
     <string name="esqueceu_senha_msg">Nós só precisamos do seu e-mail cadastrado para enviar-lhe instruções de redefinição de senha </string>
     <string name="por">Por </string>
-
+    <string name="nomeNeymar">Neymar Junior</string>
+    <string name="data">23/11/2016</string>
+    <string name="equipo">Equipamento</string>
+    <string name="acesso">Acesso</string>
+    <string name="infra">Infraestrutura</string>
+    <string name="editConta">Editar Conta</string>
+    <string name="apagConta">Apagar Conta</string>
 
     <!-- Strings para o exemplo do Material design-->
 

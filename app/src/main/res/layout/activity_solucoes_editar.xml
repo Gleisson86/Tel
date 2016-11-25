@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/activity_solucoes_editar"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.tel.gleisson.android.tel.activitySolucoesUsuario.SolucoesUsuarioActivity">
+
+
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/toolbarSolucaoUsuario"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="?attr/colorPrimary"/>
+
+
+    <LinearLayout
+        android:id="@+id/layoutSoluEdit"
+        android:layout_below="@+id/toolbarSolucaoUsuario"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+
+
+        <android.support.v7.widget.AppCompatButton
+
+            android:id="@+id/equipoSoluEdit"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/espaco_de_16"
+            android:text="@string/equipo"
+            android:textAllCaps="false"
+            android:background="@null"
+            android:textAlignment="textStart"
+            android:textColor="@color/android.preto" >
+        </android.support.v7.widget.AppCompatButton>
+
+    <!-- View/ Linha que separa as soluções  -->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/android.corCinzaClaro"/>
+
+        <android.support.v7.widget.AppCompatButton
+
+            android:id="@+id/acessoSoluEdit"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/espaco_de_16"
+            android:text="@string/acesso"
+            android:textAllCaps="false"
+            android:background="@null"
+            android:textAlignment="textStart"
+            android:textColor="@color/android.preto" >
+        </android.support.v7.widget.AppCompatButton>
+
+
+        <!-- View/ Linha que separa as soluções  -->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/android.corCinzaClaro"/>
+
+
+        <android.support.v7.widget.AppCompatButton
+
+            android:id="@+id/infraSoluEdit"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/espaco_de_16"
+            android:text="@string/infra"
+            android:textAllCaps="false"
+            android:background="@null"
+            android:textAlignment="textStart"
+            android:textColor="@color/android.preto" >
+        </android.support.v7.widget.AppCompatButton>
+
+
+    </LinearLayout>
+</RelativeLayout>

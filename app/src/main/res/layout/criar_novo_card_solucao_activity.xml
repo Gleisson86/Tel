@@ -7,7 +7,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.tel.gleisson.android.tel.activity.EditarContaActivity">
+    android:background="@color/android.branco"
+    tools:context="com.tel.gleisson.android.tel.activityContaUsuario.EditarContaActivity">
 
 
     <LinearLayout
@@ -155,28 +156,31 @@
 
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="153dp"
+                    android:layout_height="144dp"
                     android:orientation="horizontal"
-                    android:layout_margin="16dp" >
+                    android:layout_margin="8dp" >
 
                     <ImageView
+                        android:layout_weight="3"
                         android:id="@+id/image1Solucao"
-                        android:layout_width="0dp"
-                        android:layout_height="match_parent"
-                        android:layout_weight="3.81"
+                        android:layout_width="160dp"
+                        android:layout_height="120dp"
                         android:layout_margin="2dp"
-                        android:src="@drawable/ic_pastafotos"/>
+                        android:scaleType="centerCrop"
+
+
+                        />
 
 
                     <ImageButton
                         android:id="@+id/botao_add_foto_CameraOuGaleria"
                         android:layout_width="0dp"
-                        android:layout_height="50dp"
-                        android:layout_weight="0.8"
+                        android:layout_weight="1"
+                        android:layout_height="wrap_content"
                         style="?android:attr/borderlessButtonStyle"
                         android:layout_marginLeft="10dp"
                         android:layout_marginBottom="8dp"
-                        app:srcCompat="@mipmap/add_foto"/>
+                        app:srcCompat="@mipmap/ic_camera"/>
 
 
                 </LinearLayout>

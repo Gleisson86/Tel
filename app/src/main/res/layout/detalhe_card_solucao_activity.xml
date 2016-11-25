@@ -7,6 +7,7 @@
     android:id="@+id/detail_content"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/android.branco"
     android:fitsSystemWindows="true">
 
     <android.support.design.widget.AppBarLayout
@@ -29,7 +30,7 @@
             app:titleEnabled="false">
 
             <ImageView
-                android:id="@+id/image"
+                android:id="@+id/imagemDetalheSolucao"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:fitsSystemWindows="true"
@@ -62,35 +63,123 @@
             android:paddingTop="@dimen/md_keylines">
 
             <TextView
-                android:id="@+id/textView6"
+                android:id="@+id/tituloSolucaoDetalhe"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="@dimen/md_keylines"
                 android:text="@string/TituloSolucao"
-                android:textColor="?attr/colorAccent"
-                android:textSize="@dimen/article_titles"/>
+                android:textColor="@color/android.preto"
+                android:textAppearance="@style/TextAppearance.AppCompat.Title"/>
 
             <TextView
-                android:id="@+id/place_detail"
+                android:id="@+id/descricaoSolucaoDetalhe"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/texto_da_solucao"/>
 
-            <TextView
-                android:id="@+id/textView5"
+            <LinearLayout
+                android:id="@+id/layout_curtir"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="@dimen/md_keylines"
-                android:layout_marginTop="@dimen/md_keylines"
-                android:text="Location"
-                android:textColor="?attr/colorAccent"
-                android:textSize="@dimen/article_titles"/>
+                android:layout_alignParentStart="true"
+                android:layout_below="@+id/titular_da_solucao"
+                android:layout_margin="@dimen/espaco_de_8"
+                android:orientation="horizontal">
+
+
+                <ImageButton
+                    android:id="@+id/button_curtir"
+                    style="?android:attr/borderlessButtonStyle"
+                    android:layout_width="0dp"
+                    android:layout_height="@dimen/cards_button_height"
+                    android:layout_marginTop="4dp"
+                    android:layout_weight="1"
+                    app:srcCompat="@mipmap/curtir_paddin15"/>
+
+                <TextView
+                    android:id="@+id/numero_curtidas"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="25dp"
+                    android:layout_weight="1"
+                    android:text="@string/numeroCurtidas"
+                    android:textColor="@color/android.preto"/>
+
+                <ImageButton
+                    android:id="@+id/button_nao_curtir"
+                    style="?android:attr/borderlessButtonStyle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="@dimen/cards_button_height"
+                    android:layout_marginTop="4dp"
+                    app:srcCompat="@mipmap/nao_curtir_padding15"/>
+
+
+                <TextView
+                    android:id="@+id/text_nao_curtir"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="25dp"
+                    android:layout_weight="1"
+                    android:text="@string/numeroNaoCurtidas"
+                    android:textColor="@color/android.preto"/>
+
+            </LinearLayout>
+
 
             <TextView
-                android:id="@+id/place_location"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                tools:text="@string/detail_location"/>
+                android:id="@+id/linhaDetalhe"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginTop="@dimen/espaco_de_16"
+                android:background="@color/android.corAcentuada"
+                />
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginBottom="@dimen/espaco_de_16">
+
+                     <ImageView
+                      android:id="@+id/personDetalheView"
+                      android:layout_width="70dp"
+                      android:layout_height="50dp"
+                      android:layout_marginTop="@dimen/espaco_de_8"
+                      android:scaleType="centerCrop"
+                      android:src="@drawable/ic_person_black_24dp"/>
+
+                  <TextView
+                      android:id="@+id/textPorAutorViewDetalhe"
+                      android:layout_width="wrap_content"
+                      android:layout_height="wrap_content"
+                      android:layout_marginLeft="@dimen/espaco_de_16"
+                      android:layout_marginTop="@dimen/espaco_de_16"
+                      android:layout_toRightOf="@id/personDetalheView"
+                      android:text="@string/por"/>
+
+
+
+                <TextView
+                    android:id="@+id/nomeAutorViewDetalhe"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/espaco_de_8"
+                    android:layout_marginTop="@dimen/espaco_de_16"
+                    android:layout_toRightOf="@id/textPorAutorViewDetalhe"
+                    android:text="@string/nomeNeymar"/>
+
+                <TextView
+                    android:id="@+id/dataAutorViewDetalhe"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/textPorAutorViewDetalhe"
+                    android:layout_toRightOf="@+id/personDetalheView"
+                    android:layout_marginLeft="@dimen/espaco_de_16"
+                    android:layout_marginTop="@dimen/espaco_de_4"
+                    android:text="@string/data"/>
+
+
+            </RelativeLayout>
+
         </LinearLayout>
     </android.support.v4.widget.NestedScrollView>
 

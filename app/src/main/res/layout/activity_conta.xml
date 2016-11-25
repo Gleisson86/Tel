@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_conta"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.tel.gleisson.android.tel.activityContaUsuario.ContaActivity">
+
+
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/toolbarContaUsuario"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="?attr/colorPrimary"/>
+
+
+    <LinearLayout
+
+        android:id="@+id/layoutContUsu"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/toolbarContaUsuario"
+        android:orientation="vertical">
+
+
+    <android.support.v7.widget.AppCompatButton
+
+        android:id="@+id/editContUsu"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/espaco_de_16"
+        android:background="@null"
+        android:text="@string/editConta"
+        android:textAlignment="textStart"
+        android:textAllCaps="false"
+        android:textColor="@color/android.preto">
+    </android.support.v7.widget.AppCompatButton>
+
+    <!-- View/ Linha que separa as soluções  -->
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/android.corCinzaClaro"/>
+
+    <android.support.v7.widget.AppCompatButton
+
+        android:id="@+id/apagContUsu"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/espaco_de_16"
+        android:background="@null"
+        android:text="@string/apagConta"
+        android:textAlignment="textStart"
+        android:textAllCaps="false"
+        android:textColor="@color/android.preto">
+    </android.support.v7.widget.AppCompatButton>
+
+    </LinearLayout>
+
+</RelativeLayout>

@@ -1,6 +1,7 @@
 package com.tel.gleisson.android.tel.fragment;
 
 import android.os.Bundle;
+import android.os.Parcelable;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -11,7 +12,7 @@ import android.view.ViewGroup;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.tel.gleisson.android.tel.R;
-import com.tel.gleisson.android.tel.data.AdapterRecuperaSolucao;
+import com.tel.gleisson.android.tel.data.AdapterSolucaoEquipamento;
 import com.tel.gleisson.android.tel.data.SolucaoObjeto;
 import com.tel.gleisson.android.tel.data.ViewHolderRecuperaSolucao;
 
@@ -19,121 +20,123 @@ import com.tel.gleisson.android.tel.data.ViewHolderRecuperaSolucao;
  * Created by Gleisson e Rosy on 24/10/2016.
  */
 
-public class Equipamento_fragment extends Fragment{
+public class Equipamento_fragment extends Fragment/* implements SearchView.OnQueryTextListener*/{
 
 
     private DatabaseReference mDatareferencia;
-    private AdapterRecuperaSolucao adapter;
+    private AdapterSolucaoEquipamento adapter;
     private DatabaseReference RefSolucao;
+    private static Bundle mBundleRecyclerViewState;
+    private RecyclerView recyclerView;
+    private final String KEY_RECYCLER_STATE = "recycler_state";
 
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
         mDatareferencia = FirebaseDatabase.getInstance().getReference().child("Soluções").child("Equipamento");
-        RecyclerView recyclerView = (RecyclerView) inflater.inflate(R.layout.recycler_view, container, false);
+         recyclerView = (RecyclerView) inflater.inflate(R.layout.recycler_view, container, false);
      //   RefSolucao = mDatareferencia.child ("https://apptel-84297.firebaseio.com/").child("Soluções").child("Equipamento");
       //  ContentAdapter adapter = new ContentAdapter(recyclerView.getContext());
 
-        adapter = new AdapterRecuperaSolucao(SolucaoObjeto.class,R.layout.solucoes_card, ViewHolderRecuperaSolucao.class, mDatareferencia);
+        setHasOptionsMenu(true);
+
+        adapter = new AdapterSolucaoEquipamento(getContext(),SolucaoObjeto.class,R.layout.solucoes_card, ViewHolderRecuperaSolucao.class, mDatareferencia);
         recyclerView.setAdapter(adapter);
 
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
 
         return recyclerView;
-
     }
 
-/*
-    //--------------------------INICIO ViewHolder---------------------------------//
-    public static class ViewHolder extends RecyclerView.ViewHolder {
-
-        public ImageView picture;
-        public TextView name;
-        public TextView description;
 
 
-        public ViewHolder(LayoutInflater inflater, ViewGroup parent) {
-            super(inflater.inflate(R.layout.solucoes_card, parent, false));
-            picture = (ImageView) itemView.findViewById(R.id.imagem_card);
-            name = (TextView) itemView.findViewById(R.id.titulo_card);
-            description = (TextView) itemView.findViewById(R.id.texto_card);
-
-
-            itemView.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    Context context = v.getContext();
-                    Intent intent = new Intent(context, DetalheCardActivity.class);
-                    intent.putExtra(DetalheCardActivity.EXTRA_POSITION, getAdapterPosition());
-                    context.startActivity(intent);
-                }
-            });
-        }
-    }
-    //--------------------------FIM ViewFolder---------------------------------//
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    //--------------------------INICIO ContentAdapter---------------------------------//
-
-    /**
-     * Adapter to display recycler view.
-     */
 /*
 
-    public static class ContentAdapter extends RecyclerView.Adapter <ViewHolder> {
-                // Set numbers of List in RecyclerView.
-                private static final int LENGTH = 18;
-                private final String[] mPlaces;
-                private final String[] mPlaceDesc;
-                private final Drawable[] mPlacePictures;
+    @Override
+    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
+        inflater.inflate(R.menu.main_menu, menu);
 
-                public ContentAdapter(Context context) {
-                    Resources resources = context.getResources();
-                    mPlaces = resources.getStringArray(R.array.places);
-                    mPlaceDesc = resources.getStringArray(R.array.place_desc);
-                    TypedArray a = resources.obtainTypedArray(R.array.places_picture);
-                    mPlacePictures = new Drawable[a.length()];
-                    for (int i = 0; i < mPlacePictures.length; i++) {
-                        mPlacePictures[i] = a.getDrawable(i);
+        final MenuItem item = menu.findItem(R.id.action_search);
+        final SearchView searchView = (SearchView) MenuItemCompat.getActionView(item);
+        searchView.setOnQueryTextListener(this);
+
+        MenuItemCompat.setOnActionExpandListener(item,
+                new MenuItemCompat.OnActionExpandListener() {
+                    @Override
+                    public boolean onMenuItemActionCollapse(MenuItem item) {
+// Do something when collapsedadapter.setFilter(mCountryModel);
+                        return true; // Return true to collapse action view
                     }
-            a.recycle();
-        }
 
-        @Override
-        public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-            return new ViewHolder(LayoutInflater.from(parent.getContext()), parent);
-        }
-
-        @Override
-        public void onBindViewHolder(ViewHolder holder, int position) {
-            holder.picture.setImageDrawable(mPlacePictures[position % mPlacePictures.length]);
-            holder.name.setText(mPlaces[position % mPlaces.length]);
-            holder.description.setText(mPlaceDesc[position % mPlaceDesc.length]);
-        }
-
-        @Override
-        public int getItemCount() {
-            return LENGTH;
-        }
+                    @Override
+                    public boolean onMenuItemActionExpand(MenuItem item) {
+// Do something when expanded
+                        return true; // Return true to expand action view
+                    }
+                });
+    }
+    @Override
+    public boolean onQueryTextChange(String newText) {
+        final List<CountryModel> filteredModelList = filter(mCountryModel, newText);
+        adapter.setFilter(filteredModelList);
+        return true;
     }
 
-     */
+
+    @Override
+    public boolean onQueryTextSubmit(String query) {
+        return false;
+    }
+
+    private List<CountryModel> filter(List<CountryModel> models, String query) {
+        query = query.toLowerCase();final List<CountryModel> filteredModelList = new ArrayList<>();
+        for (CountryModel model : models) {
+            final String text = model.getName().toLowerCase();
+            if (text.contains(query)) {
+                filteredModelList.add(model);
+            }
+        }
+        return filteredModelList;
+    }
 
 
-    //--------------------------FIM ContentAdapter---------------------------------//
+
+*/
+
+
+
+
+
+
+
+
+
+
+
+
+
+    @Override
+    public void onPause()
+    {
+        super.onPause();
+
+      // save RecyclerView state
+        mBundleRecyclerViewState = new Bundle();
+        Parcelable listState = recyclerView.getLayoutManager().onSaveInstanceState();
+        mBundleRecyclerViewState.putParcelable(KEY_RECYCLER_STATE, listState);
+
+    }
+
+    @Override
+    public void onResume()
+    {
+        super.onResume();
+        // restore RecyclerView state
+        if (mBundleRecyclerViewState != null) {
+            Parcelable recyclerState = mBundleRecyclerViewState.getParcelable(KEY_RECYCLER_STATE);
+            recyclerView.getLayoutManager().onRestoreInstanceState(recyclerState);
+        }
+    }
 }

@@ -1,6 +1,6 @@
 package com.tel.gleisson.android.tel.data;
 
-import android.net.Uri;
+import android.content.Context;
 
 /**
  * Created by Gleisson 05/11/2016.
@@ -9,11 +9,11 @@ import android.net.Uri;
 
 public interface Solucao {
 
-    void upLoadSolucao(String id, String nome, String titulo, String palavraChave, String tipoSolucao, String descricao, Uri uri);
+    void upLoadSolucao(String id, String nome, String titulo, String palavraChave, String tipoSolucao, String descricao, String foto);
 
     void updateSolucao(String id, String nome, String titulo, String palavraChave, String tipoSolucao, String descricao, String uri);
 
-    void upLoadImagem (Uri uri);
+    void upLoadImagem (byte[] foto, Context context);
 
     Boolean deleteSolucao();
 

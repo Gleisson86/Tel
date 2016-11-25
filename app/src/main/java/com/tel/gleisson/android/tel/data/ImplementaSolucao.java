@@ -1,10 +1,10 @@
 package com.tel.gleisson.android.tel.data;
 
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.net.Uri;
-import android.support.annotation.NonNull;
+import android.support.v7.app.AppCompatActivity;
 
-import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
@@ -22,7 +22,7 @@ import java.util.Map;
  * Created by Gleisson 05/11/2016.
  */
 
-public class ImplementaSolucao implements Solucao {
+public class ImplementaSolucao extends AppCompatActivity implements Solucao {
 
     private StorageReference storageRef;
     private FirebaseStorage storage;
@@ -33,23 +33,35 @@ public class ImplementaSolucao implements Solucao {
     String timeStamp = new SimpleDateFormat("ddMMyyyy_HHmmss").format(new Date());
     String retornoUpImagemOK = null;
     private static String nomeUsuario = null;
+    private ProgressDialog progressDialog;
+
+
 
     public ImplementaSolucao(Context context) {
         this.storage = FirebaseStorage.getInstance();
-        this.storageRef = storage.getReferenceFromUrl("gs://apptel-84297.appspot.com/");
-        this.imagesRef = storageRef.child("images/" + timeStamp);
+        this.storageRef = storage.getReferenceFromUrl("gs://apptel-84297.appspot.com");
         this.context = context;
         this.uploads = new HashMap<>();
+        progressDialog = new ProgressDialog(context);
 
     }
     public ImplementaSolucao() {
 
     }
 
-    @Override
-    public void upLoadSolucao(String id, String nome, String tituloSolucao, String palavraChaveSolucao, String tipoDaSolucao, String descricaoDaSolucao, Uri uri) {
 
-          upLoadImagem(uri);
+    @Override
+    public void upLoadSolucao(String id
+            , String nome
+            , String tituloSolucao
+            , String palavraChaveSolucao
+            , String tipoDaSolucao
+            , String descricaoDaSolucao
+            , String foto) {
+
+       //   upLoadImagem(foto);
+
+    //    String teste = retornoUpImagemOK;
 
         mDatabase = FirebaseDatabase.getInstance().getReference();
         String key = mDatabase.child("Soluções").push().getKey();
@@ -69,23 +81,29 @@ public class ImplementaSolucao implements Solucao {
 
     }
 
+ public String upImagem(byte[] data, Context context){
+
+     upLoadImagem(data, context);
+     return retornoUpImagemOK;
+ }
 
     @Override
-    public void upLoadImagem(Uri uri) {
+    public void upLoadImagem(byte[] foto, Context context) {
 
+        progressDialog.setMessage("Salvando imagem...");
+        progressDialog.setCanceledOnTouchOutside(false);
+        progressDialog.show();
 
-        imagesRef.putFile(uri).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
+        UploadTask uploadTask = storageRef.child("images/" + timeStamp).putBytes(foto);
+        uploadTask.addOnSuccessListener(new OnSuccessListener<TaskSnapshot>() {
             @Override
-            public void onSuccess(TaskSnapshot taskSnapshot) {retornoUpImagemOK = taskSnapshot.getDownloadUrl().toString();
-            }
-        }).addOnFailureListener(new OnFailureListener() {
-            @Override
-            public void onFailure(@NonNull Exception e) {
-                retornoUpImagemOK = null;
+            public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
+                // Handle successful uploads on complete
+                  progressDialog.dismiss();
+                  retornoUpImagemOK = taskSnapshot.getMetadata().getDownloadUrl().toString();
             }
         });
     }
-
 
 
 

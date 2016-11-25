@@ -6,7 +6,7 @@
     android:id="@+id/activity_conta_usuario_activity"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.tel.gleisson.android.tel.activity.EditarContaActivity"
+    tools:context="com.tel.gleisson.android.tel.activityContaUsuario.EditarContaActivity"
     android:orientation="vertical">
 
 

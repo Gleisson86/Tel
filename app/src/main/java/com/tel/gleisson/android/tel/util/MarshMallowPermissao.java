@@ -23,12 +23,20 @@ public class MarshMallowPermissao {
         this.activity = activity;
     }
 
-    public boolean checkPermissionForRecord(){
-        int result = ContextCompat.checkSelfPermission(activity, Manifest.permission.RECORD_AUDIO);
+    public boolean checkPermissionForInternet(){
+        int result = ContextCompat.checkSelfPermission(activity, Manifest.permission.INTERNET);
         if (result == PackageManager.PERMISSION_GRANTED){
             return true;
         } else {
             return false;
+        }
+    }
+
+    public void requestPermissionForInternet(){
+        if (ActivityCompat.shouldShowRequestPermissionRationale(activity, Manifest.permission.INTERNET)){
+            Toast.makeText(activity, "Internet permission needed. Please allow in App Settings for additional functionality.", Toast.LENGTH_LONG).show();
+        } else {
+            ActivityCompat.requestPermissions(activity,new String[]{Manifest.permission.RECORD_AUDIO},RECORD_PERMISSION_REQUEST_CODE);
         }
     }
 
@@ -50,13 +58,6 @@ public class MarshMallowPermissao {
         }
     }
 
-    public void requestPermissionForRecord(){
-        if (ActivityCompat.shouldShowRequestPermissionRationale(activity, Manifest.permission.RECORD_AUDIO)){
-            Toast.makeText(activity, "Microphone permission needed for recording. Please allow in App Settings for additional functionality.", Toast.LENGTH_LONG).show();
-        } else {
-            ActivityCompat.requestPermissions(activity,new String[]{Manifest.permission.RECORD_AUDIO},RECORD_PERMISSION_REQUEST_CODE);
-        }
-    }
 
     public void requestPermissionForExternalStorage(){
         if (ActivityCompat.shouldShowRequestPermissionRationale(activity, permission.WRITE_EXTERNAL_STORAGE)){

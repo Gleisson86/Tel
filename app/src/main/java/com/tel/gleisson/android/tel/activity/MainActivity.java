@@ -1,34 +1,37 @@
 package com.tel.gleisson.android.tel.activity;
 
-import android.app.SearchManager;
+
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Parcelable;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
-import android.support.v4.view.MenuItemCompat;
 import android.support.v4.view.ViewPager;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.SearchView;
+import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.SearchView.OnQueryTextListener;
 
 import com.crashlytics.android.Crashlytics;
 import com.firebase.client.Firebase;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.tel.gleisson.android.tel.R;
+import com.tel.gleisson.android.tel.activityContaUsuario.ContaActivity;
+import com.tel.gleisson.android.tel.activitySolucoesUsuario.SolucoesUsuarioActivity;
 import com.tel.gleisson.android.tel.fragment.Acesso_fragment;
 import com.tel.gleisson.android.tel.fragment.Equipamento_fragment;
 import com.tel.gleisson.android.tel.fragment.Infra_fragment;
 import com.tel.gleisson.android.tel.util.ClasseUtil;
 import com.tel.gleisson.android.tel.util.PrefManager;
-import com.tel.gleisson.android.tel.util.SingletonFirebase;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -36,7 +39,7 @@ import java.util.List;
 import io.fabric.sdk.android.Fabric;
 
 
-public class MainActivity extends AppCompatActivity  {
+public class MainActivity extends AppCompatActivity implements OnQueryTextListener {
 
     private PrefManager prefManager;
     private FirebaseAuth auth;
@@ -45,8 +48,12 @@ public class MainActivity extends AppCompatActivity  {
     FloatingActionButton fab;
     private Button sair;
     private Button deletarConta;
-    private SingletonFirebase singletonFirebase;
     private Firebase firebase;
+
+    private static Bundle mBundleRecyclerViewState = null;
+    private RecyclerView recyclerView;
+    private final String KEY_RECYCLER_STATE = "recycler_state";
+    private AlertDialog.Builder builder;
 
     //  SharedPreference regra para viu ou não viu a intro. Dentro da on create e também
     // no onResume.
@@ -55,7 +62,17 @@ public class MainActivity extends AppCompatActivity  {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+
+    //    getWindow().requestFeature(Window.FEATURE_ACTION_BAR);
+     //   getActionBar().hide();
+
+
+
+
+
         Fabric.with(this, new Crashlytics());
+        builder = new AlertDialog.Builder(this);
 
         auth = FirebaseAuth.getInstance();
         prefManager = new PrefManager(this);
@@ -111,10 +128,14 @@ public class MainActivity extends AppCompatActivity  {
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.main_menu, menu);
 
-        final SearchView searchView = (SearchView) MenuItemCompat.getActionView(menu.findItem(R.id.action_search));
-        SearchManager searchManager = (SearchManager) getSystemService(SEARCH_SERVICE);
-        searchView.setSearchableInfo(searchManager.getSearchableInfo(getComponentName()));
+    //    final SearchView searchView = (SearchView) MenuItemCompat.getActionView(menu.findItem(R.id.action_search));
+    //    SearchManager searchManager = (SearchManager) getSystemService(SEARCH_SERVICE);
+    //    searchView.setSearchableInfo(searchManager.getSearchableInfo(getComponentName()));
 
+    /*    final MenuItem searchItem = menu.findItem(R.id.action_search);
+        final SearchView searchView =  MenuItemCompat.getActionView(searchItem);
+        searchView.setOnQueryTextListener(this);
+*/
         return true;
     }
 
@@ -130,20 +151,27 @@ public class MainActivity extends AppCompatActivity  {
         switch (item.getItemId()) {
             case R.id.action_search1:
                 // User chose the "Settings" item, show the app settings UI...
-              return true;
+           return true;
 
-            case R.id.action_favorite:
-                startActivity(new Intent(MainActivity.this, TelaProfileUsuarioActivity.class));
-                // User chose the "Favorite" action, mark the current item
-                // as a favorite...
+            case R.id.menuConta:
+                startActivity(new Intent(MainActivity.this, ContaActivity.class));
+                return true;
+
+            case R.id.menuSair:
+                classeUtil.chamaPopupSairFinalizaActivity(this, LoginActivity.class,auth);
+                return true;
+            case R.id.menuSolucaoEditar:
+                startActivity(new Intent(MainActivity.this, SolucoesUsuarioActivity.class));
+
+
                 return true;
 
             default:
-                // If we got here, the user's action was not recognized.
-                // Invoke the superclass to handle it.
+
                 return super.onOptionsItemSelected(item);
         }
     }
+
 
     @Override
     protected void onResume() {
@@ -152,6 +180,36 @@ public class MainActivity extends AppCompatActivity  {
             startActivity(new Intent(MainActivity.this, LoginActivity.class));
         }
        // inicio();
+
+        if (mBundleRecyclerViewState != null) {
+            Parcelable recyclerState = mBundleRecyclerViewState.getParcelable(KEY_RECYCLER_STATE);
+            recyclerView.getLayoutManager().onRestoreInstanceState(recyclerState);
+        }
+    }
+
+    @Override
+    public void onPause()
+    {
+        super.onPause();
+
+  /*      // save RecyclerView state
+        mBundleRecyclerViewState = new Bundle();
+        Parcelable listState = recyclerView.getLayoutManager().onSaveInstanceState();
+        mBundleRecyclerViewState.putParcelable(KEY_RECYCLER_STATE, listState);
+*/
+    }
+
+    @Override
+    public boolean onQueryTextSubmit(String s) {
+
+
+
+        return false;
+    }
+
+    @Override
+    public boolean onQueryTextChange(String s) {
+        return false;
     }
 
 

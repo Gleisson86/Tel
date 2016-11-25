@@ -2,6 +2,7 @@ package com.tel.gleisson.android.tel.data;
 
 import com.google.firebase.database.Exclude;
 
+import java.io.Serializable;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -9,7 +10,7 @@ import java.util.Map;
  * Created by Gleisson e Rosy on 07/11/2016.
  */
 
-public class SolucaoObjeto {
+public class SolucaoObjeto implements Serializable {
 
     public String id;
     public String nome;
@@ -17,7 +18,7 @@ public class SolucaoObjeto {
     public String palavraChave;
     public String tipoSolucao;
     public String descricao;
-    String uri;
+    public String foto;
     public Map<String, Boolean> stars = new HashMap<>();
 
 
@@ -25,14 +26,14 @@ public class SolucaoObjeto {
 
     }
 
-    public SolucaoObjeto(String id, String nome, String titulo, String palavraChave, String tipoSolucao, String descricao, String uri) {
+    public SolucaoObjeto(String id, String nome, String titulo, String palavraChave, String tipoSolucao, String descricao, String foto) {
         this.id = id;
         this.nome = nome;
         this.titulo = titulo;
         this.palavraChave = palavraChave;
         this.tipoSolucao = tipoSolucao;
         this.descricao = descricao;
-        this.uri = uri;
+        this.foto = foto;
     }
 
     @Exclude
@@ -44,7 +45,7 @@ public class SolucaoObjeto {
         result.put("palavraChave", palavraChave);
         result.put("tipoSolucao", tipoSolucao);
         result.put("descricao", descricao);
-        result.put("foto",uri);
+        result.put("foto",foto);
 
         return result;
     }
@@ -97,19 +98,11 @@ public class SolucaoObjeto {
         this.descricao = descricao;
     }
 
-    public String getUri() {
-        return uri;
+    public String getFoto() {
+        return foto;
     }
 
-    public void setUri(String uri) {
-        this.uri = uri;
-    }
-
-    public Map<String, Boolean> getStars() {
-        return stars;
-    }
-
-    public void setStars(Map<String, Boolean> stars) {
-        this.stars = stars;
+    public void setFoto(String foto) {
+        this.foto = foto;
     }
 }

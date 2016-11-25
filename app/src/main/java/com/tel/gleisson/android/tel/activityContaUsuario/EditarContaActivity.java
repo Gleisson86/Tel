@@ -1,4 +1,4 @@
-package com.tel.gleisson.android.tel.activity;
+package com.tel.gleisson.android.tel.activityContaUsuario;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -27,7 +27,7 @@ public class EditarContaActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                startActivity(new Intent(EditarContaActivity.this, TelaProfileUsuarioActivity.class));
+                startActivity(new Intent(EditarContaActivity.this, ContaActivity.class));
                 finish();
             }
         });

@@ -15,14 +15,17 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.tel.gleisson.android.tel.R;
 import com.tel.gleisson.android.tel.util.ClasseUtil;
 
+;
+
 public class ResetPasswordActivity extends AppCompatActivity {
 
     private EditText inputEmail;
     private Button botaoReset;
     private FirebaseAuth auth;
-    private int indicador;
+    private ClasseUtil classeUtil;
 
-    //  private ProgressDialog progressDialog;
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,15 +33,11 @@ public class ResetPasswordActivity extends AppCompatActivity {
         setContentView(R.layout.reset_senha_activity);
 
 
-     //   getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-     //   getSupportActionBar().setHomeButtonEnabled(true);
 
-
-
-        indicador = 0;
         auth = FirebaseAuth.getInstance();
         inputEmail = (EditText) findViewById(R.id.email);
         botaoReset = (Button) findViewById(R.id.botao_reset_senha_reset);
+        classeUtil = new ClasseUtil(this);
 
 
         botaoReset.setOnClickListener(new View.OnClickListener() {
@@ -48,7 +47,7 @@ public class ResetPasswordActivity extends AppCompatActivity {
             public void onClick(View v) {
 
                 String email = inputEmail.getText().toString().trim();
-                final ClasseUtil classeUtil = new ClasseUtil(ResetPasswordActivity.this);
+               // final ClasseUtil classeUtil = new ClasseUtil(ResetPasswordActivity.this);
 
 
                 if (TextUtils.isEmpty(email)) {

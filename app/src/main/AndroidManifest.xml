@@ -14,6 +14,7 @@
     <uses-permission android:name="android.permission.READ_PROFILE"/>
     <uses-permission android:name="android.permission.CAMERA"/>
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
 
     <application
         android:allowBackup="true"
@@ -21,7 +22,7 @@
         android:icon="@mipmap/tel"
         android:label="@string/app_name"
         android:supportsRtl="true"
-        android:theme="@style/Intro"
+        android:theme="@style/IntroMainDialogoMenu"
         tools:ignore="HardcodedDebugMode">
         <activity
             android:name=".activity.MainActivity"
@@ -41,10 +42,7 @@
             android:parentActivityName=".activity.LoginActivity"
             android:theme="@style/Intro.NoActionBar">
         </activity>
-        <activity
-            android:name=".activity.EditarContaActivity"
-            android:theme="@style/Intro.Usuario">
-        </activity>
+
         <activity
             android:name=".activity.CriarContaActivity"
             android:parentActivityName=".activity.LoginActivity"
@@ -71,10 +69,46 @@
             android:value="c82af693ab49ebb24bb08fa2dbdbc43cd470bd36"/>
 
         <activity
-            android:name=".activity.TelaProfileUsuarioActivity"
+            android:name=".activityContaUsuario.TelaProfileUsuarioActivity"
             android:parentActivityName=".activity.MainActivity"
             android:theme="@style/Intro.DetalheCardNoTitle">
         </activity>
+        <activity
+            android:name=".activitySolucoesUsuario.SolucoesUsuarioActivity"
+            android:theme="@style/Intro.Main"
+            android:parentActivityName=".activity.MainActivity">
+        </activity>
+
+        <activity
+            android:name=".activitySolucoesUsuario.EquipamentoSolucoesActivity"
+            android:theme="@style/Intro.Main"
+            android:parentActivityName=".activitySolucoesUsuario.SolucoesUsuarioActivity">
+        </activity>
+
+        <activity
+            android:name=".activitySolucoesUsuario.AcessoSolucoesActivity"
+            android:theme="@style/Intro.Main"
+            android:parentActivityName=".activitySolucoesUsuario.SolucoesUsuarioActivity">
+        </activity>
+        <activity
+            android:name=".activitySolucoesUsuario.InfraestruturaSolucoesActivity"
+            android:theme="@style/Intro.Main"
+            android:parentActivityName=".activitySolucoesUsuario.SolucoesUsuarioActivity">
+        </activity>
+        <activity android:name=".activityContaUsuario.ContaActivity"
+                  android:theme="@style/Intro.Main"
+                  android:parentActivityName=".activity.MainActivity">
+        </activity>
+        <activity android:name=".activityContaUsuario.ApagarContaActivity"
+                  android:parentActivityName=".activityContaUsuario.ContaActivity"
+                  android:theme="@style/Intro.Main">
+        </activity>
+        <activity
+            android:name=".activityContaUsuario.EditarContaActivity"
+            android:theme="@style/Intro.Main"
+            android:parentActivityName=".activityContaUsuario.ContaActivity">
+        </activity>
+
     </application>
 
 </manifest>

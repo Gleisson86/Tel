@@ -7,6 +7,7 @@ import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.text.TextUtils;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 
@@ -22,6 +23,7 @@ public class LoginActivity extends AppCompatActivity {
     private EditText inputEmail, inputSenha;
     private FirebaseAuth auth;
     private Button btnSignup, btnLogin, btnReset;
+    private ClasseUtil classeUtil;
 
 
 
@@ -33,6 +35,8 @@ public class LoginActivity extends AppCompatActivity {
         //Get Firebase auth instance
         auth = FirebaseAuth.getInstance();
 
+        classeUtil = new ClasseUtil(LoginActivity.this);
+        getWindow().setLayout(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT);
 
         // set the view now
         setContentView(R.layout.login_activity);
@@ -52,9 +56,7 @@ public class LoginActivity extends AppCompatActivity {
         btnReset.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(LoginActivity.this, ResetPasswordActivity.class);
-                startActivity(intent);
-
+                startActivity(new Intent(LoginActivity.this, ResetPasswordActivity.class));
             }
         });
 
@@ -65,7 +67,7 @@ public class LoginActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(LoginActivity.this, CriarContaActivity.class));
-                finish();
+
             }
         });
 
@@ -74,12 +76,13 @@ public class LoginActivity extends AppCompatActivity {
             public void onClick(View v) {
                 String email = inputEmail.getText().toString().trim();
                 final String password = inputSenha.getText().toString().trim();
-                final ClasseUtil classeUtil = new ClasseUtil(LoginActivity.this);
+
 
 
 
                 if (TextUtils.isEmpty(email)) {
-                 classeUtil.chamaDialogo(getString(R.string.entreComEmailMensagem),getString(R.string.tentenovamente));
+                 classeUtil = new ClasseUtil(getApplicationContext());
+                    classeUtil.chamaDialogo(getString(R.string.entreComEmailMensagem),getString(R.string.tentenovamente));
                     return;
                 }
                 if (TextUtils.isEmpty(password)) {
@@ -95,7 +98,7 @@ public class LoginActivity extends AppCompatActivity {
                 }
 
                 //progressBar.setVisibility(View.VISIBLE);
-                classeUtil.chamaProgess(getString(R.string.processandoTitulo),getString(R.string.aguardeMensagem));
+                        classeUtil.chamaProgess(getString(R.string.processandoTitulo),getString(R.string.aguardeMensagem));
 
 
                 //authenticate user
@@ -134,4 +137,5 @@ public class LoginActivity extends AppCompatActivity {
             finish();
         }
     }
+
 }

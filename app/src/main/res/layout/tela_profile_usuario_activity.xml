@@ -7,7 +7,7 @@
     android:layout_height="match_parent"
     android:fitsSystemWindows="true"
 
-    tools:context="com.tel.gleisson.android.tel.activity.TelaProfileUsuarioActivity">
+    tools:context="com.tel.gleisson.android.tel.activityContaUsuario.TelaProfileUsuarioActivity">
 
 
     <android.support.design.widget.AppBarLayout

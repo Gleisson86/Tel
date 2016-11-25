@@ -13,11 +13,25 @@
 
     <style name="AlertaPadraoTel" parent="Theme.AppCompat.Light.Dialog.Alert">
         <!-- Used for the buttons -->
-        <item name="colorAccent">@color/android.corPrimariaDark</item>
+        <item name="colorAccent">@color/colorPrimaryDark</item>
         <!-- Used for the title and text -->
+        <item name="android:colorPrimaryDark">@color/android.corAcentuada</item>
         <item name="android:textColorPrimary">@color/android.preto</item>
 
     </style>
+    <style name="ProgressPadraoTel" parent="Theme.AppCompat.Dialog">
+        <!-- Used for the buttons -->
+        <item name="colorAccent">@color/colorPrimaryDark</item>
+        <item name="android:windowMinWidthMajor">96%</item>
+        <item name="android:windowMinWidthMinor">96%</item>
+        <!-- Used for the title and text -->
+        <item name="android:colorPrimaryDark">@color/android.corAcentuada</item>
+        <item name="android:textColorPrimary">@color/android.preto</item>
+
+
+    </style>
+
+
 
     <style name="Intro.ActionBar" parent="Intro">
         <!--<item name="windowNoTitle">true</item>
@@ -53,6 +67,7 @@
         <item name="android:textColorPrimary">@color/android.branco</item>
         <item name="colorAccent">@color/android.branco</item>
         <item name="android:windowBackground">@color/android.corPrimaria</item>
+        <item name="colorControlNormal">@color/android.branco</item>
 
     </style>
 
@@ -76,9 +91,8 @@
         <item name="android:textColorPrimary">@color/android.branco</item>
         <item name="colorAccent">@color/android.corAcentuada</item>
         <item name="colorPrimary">@color/android.corPrimaria</item>
+        <item name="colorControlNormal">@color/android.branco</item>
     </style>
-
-
 
 
     <style name="AppTheme" parent="Theme.AppCompat.Light">
@@ -98,7 +112,17 @@
 
 
 
+    <style name="IntroMainDialogoMenu" parent="Theme.AppCompat">
+        <!-- Customize your theme here. -->
 
+
+        <item name="android:statusBarColor">@color/android.corPrimariaDark</item>
+        <item name="android:navigationBarColor">@color/android.preto</item>
+        <item name="colorPrimaryDark">@color/android.corPrimariaDark</item>
+        <item name="android:textColorPrimary">@color/android.branco</item>
+        <item name="colorAccent">@color/android.corAcentuada</item>
+        <item name="colorPrimary">@color/android.corPrimaria</item>
+    </style>
 
 
 

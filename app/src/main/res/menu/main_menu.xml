@@ -27,13 +27,20 @@
         app:showAsAction="ifRoom|collapseActionView" />
 
     <!-- "Mark Favorite", should appear as action button if possible -->
-    <item
-        android:id="@+id/action_favorite"
-        android:icon="@drawable/ic_person_white_48dp"
-        android:title="@string/conta"
-        app:showAsAction="always"/>
-
-    <!-- Settings, should always be in the overflow -->
+    <group android:id="@+id/group_delete">
+        <item
+            android:id="@+id/menuSolucaoEditar"
+            app:showAsAction="collapseActionView"
+            android:title="Soluções/Editar"/>
+        <item
+            android:id="@+id/menuConta"
+            app:showAsAction="collapseActionView"
+            android:title="Conta"/>
+        <item
+            android:id="@+id/menuSair"
+            app:showAsAction="collapseActionView"
+            android:title="Sair"/>
+    </group>
 
 
 </menu>

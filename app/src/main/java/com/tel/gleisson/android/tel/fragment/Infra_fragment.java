@@ -11,7 +11,7 @@ import android.view.ViewGroup;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.tel.gleisson.android.tel.R;
-import com.tel.gleisson.android.tel.data.AdapterRecuperaSolucao;
+import com.tel.gleisson.android.tel.data.AdapterSolucaoInfraestrutura;
 import com.tel.gleisson.android.tel.data.SolucaoObjeto;
 import com.tel.gleisson.android.tel.data.ViewHolderRecuperaSolucao;
 
@@ -22,7 +22,7 @@ import com.tel.gleisson.android.tel.data.ViewHolderRecuperaSolucao;
 public class Infra_fragment extends Fragment {
 
     private DatabaseReference mDatareferencia;
-    private AdapterRecuperaSolucao adapter;
+    private AdapterSolucaoInfraestrutura adapter;
     private DatabaseReference RefSolucao;
 
 
@@ -34,7 +34,7 @@ public class Infra_fragment extends Fragment {
         //   RefSolucao = mDatareferencia.child ("https://apptel-84297.firebaseio.com/").child("Soluções").child("Equipamento");
         //  ContentAdapter adapter = new ContentAdapter(recyclerView.getContext());
 
-        adapter = new AdapterRecuperaSolucao(SolucaoObjeto.class,R.layout.solucoes_card, ViewHolderRecuperaSolucao.class, mDatareferencia);
+        adapter = new AdapterSolucaoInfraestrutura(getContext(),SolucaoObjeto.class,R.layout.solucoes_card, ViewHolderRecuperaSolucao.class, mDatareferencia);
         recyclerView.setAdapter(adapter);
 
         recyclerView.setHasFixedSize(true);

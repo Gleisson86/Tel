@@ -22,6 +22,8 @@ public class IntroActivity extends AppIntro {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
+        setSkipText("pular");
+        setDoneText("Inicio");
         addSlide(SampleSlide.newInstance(R.layout.intro1));
         addSlide(SampleSlide.newInstance(R.layout.intro2));
         addSlide(SampleSlide.newInstance(R.layout.intro3));
@@ -32,6 +34,10 @@ public class IntroActivity extends AppIntro {
 
     }
 
+    @Override
+    public void setSkipText(@Nullable CharSequence text) {
+        super.setSkipText(text);
+    }
 
     @Override
     protected void onResume() {

@@ -26,6 +26,8 @@ public class SampleSlide extends Fragment {
         return sampleSlide;
     }
 
+
+
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
