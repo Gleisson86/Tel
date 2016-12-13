@@ -1,6 +1,6 @@
 package com.tel.gleisson.android.tel.activity;
 
-
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Parcelable;
@@ -27,6 +27,7 @@ import com.google.firebase.auth.FirebaseUser;
 import com.tel.gleisson.android.tel.R;
 import com.tel.gleisson.android.tel.activityContaUsuario.ContaActivity;
 import com.tel.gleisson.android.tel.activitySolucoesUsuario.SolucoesUsuarioActivity;
+import com.tel.gleisson.android.tel.data.ImplementaSolucao;
 import com.tel.gleisson.android.tel.fragment.Acesso_fragment;
 import com.tel.gleisson.android.tel.fragment.Equipamento_fragment;
 import com.tel.gleisson.android.tel.fragment.Infra_fragment;
@@ -37,6 +38,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 import io.fabric.sdk.android.Fabric;
+
+import static com.tel.gleisson.android.tel.R.style.AlertaPadraoTel;
 
 
 public class MainActivity extends AppCompatActivity implements OnQueryTextListener {
@@ -54,6 +57,7 @@ public class MainActivity extends AppCompatActivity implements OnQueryTextListen
     private RecyclerView recyclerView;
     private final String KEY_RECYCLER_STATE = "recycler_state";
     private AlertDialog.Builder builder;
+    private ImplementaSolucao implementaSolucao;
 
     //  SharedPreference regra para viu ou não viu a intro. Dentro da on create e também
     // no onResume.
@@ -65,14 +69,13 @@ public class MainActivity extends AppCompatActivity implements OnQueryTextListen
 
 
     //    getWindow().requestFeature(Window.FEATURE_ACTION_BAR);
-     //   getActionBar().hide();
-
+        //   getActionBar().hide();
 
 
 
 
         Fabric.with(this, new Crashlytics());
-        builder = new AlertDialog.Builder(this);
+        builder = new AlertDialog.Builder(this, AlertaPadraoTel);
 
         auth = FirebaseAuth.getInstance();
         prefManager = new PrefManager(this);
@@ -158,8 +161,34 @@ public class MainActivity extends AppCompatActivity implements OnQueryTextListen
                 return true;
 
             case R.id.menuSair:
-                classeUtil.chamaPopupSairFinalizaActivity(this, LoginActivity.class,auth);
-                return true;
+
+             //  new ImplementaSolucao(this).setUsuario(null);
+             //   classeUtil.chamaPopupSairFinalizaActivity(this, LoginActivity.class,auth);
+
+                DialogInterface.OnClickListener dialogClickListener = new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        switch (which) {
+                             case DialogInterface.BUTTON_POSITIVE:
+
+                                 auth.signOut();
+                                Intent intent = new Intent(MainActivity.this, LoginActivity.class);
+                               startActivity(intent);
+                               finish();
+
+                                break;
+
+                             case DialogInterface.BUTTON_NEGATIVE:
+                                break;
+                        }
+                    }
+                };
+                builder.setMessage("Realmente você deseja sair?");
+                builder.setPositiveButton("Sim", dialogClickListener);
+                builder.setNegativeButton("Não", dialogClickListener);
+                builder.show();
+
+               return true;
             case R.id.menuSolucaoEditar:
                 startActivity(new Intent(MainActivity.this, SolucoesUsuarioActivity.class));
 
@@ -178,6 +207,7 @@ public class MainActivity extends AppCompatActivity implements OnQueryTextListen
         super.onResume();
         if (auth.getCurrentUser() == null) {
             startActivity(new Intent(MainActivity.this, LoginActivity.class));
+            finish();
         }
        // inicio();
 

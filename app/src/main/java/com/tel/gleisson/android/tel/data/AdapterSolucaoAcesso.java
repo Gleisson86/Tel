@@ -26,11 +26,12 @@ public class AdapterSolucaoAcesso extends FirebaseRecyclerAdapter<SolucaoObjeto,
     protected void populateViewHolder(ViewHolderRecuperaSolucao viewHolder, SolucaoObjeto model, int position) {
 
         viewHolder.titulo.setText(model.getTitulo());
+        viewHolder.data.setText(model.getData());
         String text = model.getTitulo();
         viewHolder.nome.setText(model.getNome());
         PicassoClient.downloaImage(context, model.getFoto(), viewHolder.imagemSolucao);
         ArraySolucoes.acesso.add(position,model);
-        ArraySolucoes.imagensSolucoes.add(position,model.getFoto());
+
 
     }
 
@@ -45,9 +46,10 @@ public class AdapterSolucaoAcesso extends FirebaseRecyclerAdapter<SolucaoObjeto,
 
                 solucaoObjeto = new SolucaoObjeto();
                 solucaoObjeto = ArraySolucoes.acesso.get(position);
-                String imagensSolucao = solucaoObjeto.getFoto();
+
                 Bundle bundle = new Bundle();
-                bundle.putString("url",imagensSolucao);
+                bundle.putString("data",solucaoObjeto.getData());
+                bundle.putString("url",solucaoObjeto.getFoto());
                 bundle.putInt("posicao", position);
                 bundle.putString("nome", solucaoObjeto.getNome());
                 bundle.putString("titulo", solucaoObjeto.getTitulo());

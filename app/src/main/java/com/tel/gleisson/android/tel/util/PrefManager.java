@@ -18,6 +18,7 @@ public class PrefManager {
     // Shared preferences file name
     private static final String PREF_NAME = "Bem vindo Tel";
 
+
     private static final String IS_FIRST_TIME_LAUNCH = "IsFirstTimeLaunch";
 
     public PrefManager(Context context) {
@@ -25,6 +26,7 @@ public class PrefManager {
         pref = _context.getSharedPreferences(PREF_NAME, PRIVATE_MODE);
         editor = pref.edit();
     }
+
 
     public void setFirstTimeLaunch(boolean isFirstTime) {
 

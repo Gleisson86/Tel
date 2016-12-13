@@ -9,23 +9,38 @@ public class User {
     String email;
     String idUser;
 
-    public User(String username, String email, String idUser) {
+    public User(){
 
-        this.nome = username;
-        this.idUser = idUser;
-        this.email = email;
     }
 
+
+    public User(String nome, String email, String idUser) {
+        this.nome = nome;
+        this.email = email;
+        this.idUser = idUser;
+    }
+
+    public String getNome() {
+        return nome;
+    }
+
+    public void setNome(String nome) {
+        this.nome = nome;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
 
     public String getIdUser() {
         return idUser;
     }
 
-    public String getName() {
-        return nome;
-    }
-
-    public String get_email() {
-        return email;
+    public void setIdUser(String idUser) {
+        this.idUser = idUser;
     }
 }

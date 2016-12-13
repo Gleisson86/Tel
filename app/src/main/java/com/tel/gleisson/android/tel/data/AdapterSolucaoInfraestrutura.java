@@ -27,10 +27,11 @@ public class AdapterSolucaoInfraestrutura  extends FirebaseRecyclerAdapter<Soluc
 
         viewHolder.titulo.setText(model.getTitulo());
         String text = model.getTitulo();
+        viewHolder.data.setText(model.getData());
         viewHolder.nome.setText(model.getNome());
         PicassoClient.downloaImage(context, model.getFoto(), viewHolder.imagemSolucao);
         ArraySolucoes.infra.add(position,model);
-        ArraySolucoes.imagensSolucoes.add(position,model.getFoto());
+
 
     }
 
@@ -45,9 +46,9 @@ public class AdapterSolucaoInfraestrutura  extends FirebaseRecyclerAdapter<Soluc
 
                 solucaoObjeto = new SolucaoObjeto();
                 solucaoObjeto = ArraySolucoes.infra.get(position);
-                String imagensSolucao = solucaoObjeto.getFoto();
                 Bundle bundle = new Bundle();
-                bundle.putString("url",imagensSolucao);
+                bundle.putString("data",solucaoObjeto.getData());
+                bundle.putString("url",solucaoObjeto.getFoto());
                 bundle.putInt("posicao", position);
                 bundle.putString("nome", solucaoObjeto.getNome());
                 bundle.putString("titulo", solucaoObjeto.getTitulo());

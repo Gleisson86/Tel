@@ -17,9 +17,11 @@
 
     <dimen name="card_height">304dp</dimen>
     <dimen name="md_keylines">16dp</dimen>
+    <dimen name="espaco_de_2">2dp</dimen>
     <dimen name="espaco_de_4">4dp</dimen>
     <dimen name="espaco_de_8">8dp</dimen>
     <dimen name="espaco_de_16">16dp</dimen>
+    <dimen name="texto_de_12sp">12sp</dimen>
     <dimen name="md_apos_por">45dp</dimen>
     <dimen name="tile_padding">8dp</dimen>
     <dimen name="tile_height">160dp</dimen>

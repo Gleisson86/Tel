@@ -13,6 +13,7 @@ import java.util.Map;
 public class SolucaoObjeto implements Serializable {
 
     public String id;
+    public String data;
     public String nome;
     public String titulo;
     public String palavraChave;
@@ -26,8 +27,9 @@ public class SolucaoObjeto implements Serializable {
 
     }
 
-    public SolucaoObjeto(String id, String nome, String titulo, String palavraChave, String tipoSolucao, String descricao, String foto) {
+    public SolucaoObjeto(String id,String data, String nome, String titulo, String palavraChave, String tipoSolucao, String descricao, String foto) {
         this.id = id;
+        this.data = data;
         this.nome = nome;
         this.titulo = titulo;
         this.palavraChave = palavraChave;
@@ -40,6 +42,7 @@ public class SolucaoObjeto implements Serializable {
     public Map<String, Object> toMap() {
         HashMap<String, Object> result = new HashMap<>();
         result.put("id", id);
+        result.put("data", data);
         result.put("nome", nome);
         result.put("titulo", titulo);
         result.put("palavraChave", palavraChave);
@@ -56,6 +59,14 @@ public class SolucaoObjeto implements Serializable {
 
     public void setId(String id) {
         this.id = id;
+    }
+
+    public String getData() {
+        return data;
+    }
+
+    public void setData(String data) {
+        this.data = data;
     }
 
     public String getNome() {

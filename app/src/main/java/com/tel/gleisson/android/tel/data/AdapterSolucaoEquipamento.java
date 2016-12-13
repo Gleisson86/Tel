@@ -12,7 +12,6 @@ import com.tel.gleisson.android.tel.activity.DetalheCardActivity;
 /**
  * Created by Gleisson on 21/11/2016.
  */
-
 public class AdapterSolucaoEquipamento extends FirebaseRecyclerAdapter<SolucaoObjeto, ViewHolderRecuperaSolucao> {
     Context context;
     SolucaoObjeto solucaoObjeto;
@@ -27,15 +26,21 @@ public class AdapterSolucaoEquipamento extends FirebaseRecyclerAdapter<SolucaoOb
     protected void populateViewHolder(ViewHolderRecuperaSolucao viewHolder, SolucaoObjeto model, final int position) {
 
         viewHolder.titulo.setText(model.getTitulo());
+        viewHolder.data.setText(model.getData());
         String text = model.getTitulo();
         viewHolder.nome.setText(model.getNome());
-      //  PicassoClient.downloaImage(context, model.getFoto(), viewHolder.imagemSolucao);
+        //  PicassoClient.downloaImage(context, model.getFoto(), viewHolder.imagemSolucao);
         PicassoClient.downloaImage(context, model.getFoto(), viewHolder.imagemSolucao);
-       // PicassoClient.imageDownload(context,model.getFoto());
+        // PicassoClient.imageDownload(context,model.getFoto());
         ArraySolucoes.equipamento.add(position,model);
-     //   ArraySolucoes.imagensSolucoes.add(position,model.getFoto());
+
+
     }
 
+    @Override
+    public SolucaoObjeto getItem(int position) {
+        return super.getItem(position);
+    }
 
     @Override
     public void onBindViewHolder(ViewHolderRecuperaSolucao viewHolder, final int position) {
@@ -44,12 +49,13 @@ public class AdapterSolucaoEquipamento extends FirebaseRecyclerAdapter<SolucaoOb
         viewHolder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                notifyDataSetChanged();
 
                 solucaoObjeto = new SolucaoObjeto();
                 solucaoObjeto = ArraySolucoes.equipamento.get(position);
-               // String imagensSolucao = solucaoObjeto.getFoto();
+
                 Bundle bundle = new Bundle();
+                bundle.putString("data",solucaoObjeto.getData());
                 bundle.putString("url",solucaoObjeto.getFoto());
                 bundle.putInt("posicao", position);
                 bundle.putString("nome", solucaoObjeto.getNome());
@@ -61,17 +67,7 @@ public class AdapterSolucaoEquipamento extends FirebaseRecyclerAdapter<SolucaoOb
                 context.startActivity(intent);
             }
         });
-
-
     }
-
-/*
-    public void setFilter(List<CountryModel> countryModels){
-        mCountryModel = new ArrayList<>();
-        mCountryModel.addAll(countryModels);
-        notifyDataSetChanged();
-    }
-*/
 
 }
 

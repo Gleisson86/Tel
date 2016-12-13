@@ -21,6 +21,7 @@ public class ViewHolderRecuperaSolucao extends RecyclerView.ViewHolder {
     public TextView titulo;
   //  public TextView palavraChave;
    // public TextView tipoSolucao;
+    public TextView data;
     public TextView descricao;
     public String uri;
     public ImageView imagemSolucao;
@@ -29,6 +30,7 @@ public class ViewHolderRecuperaSolucao extends RecyclerView.ViewHolder {
     public ViewHolderRecuperaSolucao(View itemView) {
         super(itemView);
 
+        data = (TextView) itemView.findViewById(R.id.dataSolucaoes_card);
         titulo = (TextView) itemView.findViewById(R.id.titulo_card);
         nome = (TextView) itemView.findViewById(R.id.titular_da_solucao);
         //descricao = (TextView) itemView.findViewById(R.id.texto_card);

@@ -12,6 +12,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
+
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
@@ -20,8 +21,11 @@ import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.tel.gleisson.android.tel.R;
+import com.tel.gleisson.android.tel.data.ImplementaSolucao;
+import com.tel.gleisson.android.tel.data.SolucaoObjeto;
 import com.tel.gleisson.android.tel.data.User;
 import com.tel.gleisson.android.tel.util.ClasseUtil;
+import com.tel.gleisson.android.tel.util.PrefUser;
 
 
 /**
@@ -40,12 +44,14 @@ public class CriarContaActivity extends AppCompatActivity implements View.OnClic
     private Button botaoCriarConta;
     private ProgressDialog progressDialog;
     private ClasseUtil classeUtil;
-
+    public static SolucaoObjeto usuario;
+    private ImplementaSolucao implementaSolucao;
 
     //defining firebaseauth object
     private DatabaseReference mDatabase;
     private FirebaseAuth firebaseAuth;
     private FirebaseUser user;
+    private PrefUser prefUser;
 
 
     // Método onCreate
@@ -64,12 +70,15 @@ public class CriarContaActivity extends AppCompatActivity implements View.OnClic
         editTextEmail = (EditText) findViewById(R.id.email);
         editTextPassword = (EditText) findViewById(R.id.senha);
         botaoCriarConta = (Button) findViewById(R.id.botao_criar_conta);
-
+        implementaSolucao = new ImplementaSolucao(this);
         progressDialog = new ProgressDialog(this);
+        prefUser = new PrefUser(this);
 
         //attaching listener to button
         botaoCriarConta.setOnClickListener(this);
     }
+
+
 
 
     // Metodo para criar uma conta baseada em Email e Senha
@@ -120,7 +129,8 @@ public class CriarContaActivity extends AppCompatActivity implements View.OnClic
 
                 if (task.isSuccessful()) {
                     //display some message here
-                    criaProfile(task.getResult().getUser());
+
+                    salvaUsuarioFirebase(task.getResult().getUser());
                     Toast.makeText(CriarContaActivity.this,getString(R.string.conta_criada_sucesso),Toast.LENGTH_LONG).show();
                     Intent intent = new Intent(CriarContaActivity.this, MainActivity.class);
                     startActivity(intent);
@@ -133,26 +143,35 @@ public class CriarContaActivity extends AppCompatActivity implements View.OnClic
                 }
 
             }
+
         });
 
+    }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        finish();
     }
 
     //CRIA NOVA CONTA DE USUÁRIO
     //-------------------------------------------------------------------------------------------------------
 
-    private void criaProfile(FirebaseUser user) {
+    private void salvaUsuarioFirebase(FirebaseUser user) {
 
-        String username = editTextNome.getText().toString().trim();
-        writeNewUser(username,user.getEmail() ,user.getUid());
+        User usuario = new User(editTextNome.getText().toString().trim(),user.getEmail(),user.getUid());
+        prefUser.salvaUsuario(editTextNome.getText().toString().trim());
+        implementaSolucao.setUsuario(usuario);
+        implementaSolucao.saveUserFirebase(user);
     }
-
+/*
     // [START basic_write]
     private void writeNewUser(String name, String email,String userId) {
        // classeUtil = new ClasseUtil(this);
         User user = new User(name, email , userId);
         mDatabase.child("users").child(userId).setValue(user);
 
-    }
+    }*/
     // [END basic_write]
 
     //-------------------------------------------------------------------------------------------------------

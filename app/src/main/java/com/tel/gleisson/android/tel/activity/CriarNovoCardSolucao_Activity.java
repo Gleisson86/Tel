@@ -34,11 +34,13 @@ import com.tel.gleisson.android.tel.R;
 import com.tel.gleisson.android.tel.data.ImplementaSolucao;
 import com.tel.gleisson.android.tel.util.ClasseUtil;
 import com.tel.gleisson.android.tel.util.MarshMallowPermissao;
+import com.tel.gleisson.android.tel.util.PrefUser;
 
 import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.Date;
 
 import static android.provider.MediaStore.Files.FileColumns.MEDIA_TYPE_VIDEO;
@@ -76,6 +78,7 @@ public class CriarNovoCardSolucao_Activity extends AppCompatActivity implements 
     private String  nomeUsuarioSolucao;
     private FirebaseUser usuario;
     private String URLretornoUploadImagem = null;
+    private PrefUser prefUser;
 
     private File image;
 
@@ -97,8 +100,9 @@ public class CriarNovoCardSolucao_Activity extends AppCompatActivity implements 
         botaoConfirmarSolucao = (ImageButton) findViewById(R.id.botao_confirmar_solucao);
         mDatabase = FirebaseDatabase.getInstance().getReference();
         usuario = FirebaseAuth.getInstance().getCurrentUser();
-        implementaSolucao = new ImplementaSolucao(this);
+        prefUser = new PrefUser(this);
         classeUtil = new ClasseUtil(this);
+        implementaSolucao = new ImplementaSolucao(this);
 
 
         //--------------ABRE ADAPTER QUE CRIAR O SPINNER NO LAYOUT
@@ -266,10 +270,14 @@ public class CriarNovoCardSolucao_Activity extends AppCompatActivity implements 
 
         TextView textView = (TextView) tipoSolucao.getSelectedView();
         tipoSolucaoAdapter = textView.getText().toString();
+        String nome = prefUser.getUsuarioLogado();
+        Calendar c = Calendar.getInstance();
 
-        String nome = "Gleisson Nascimento";
+        SimpleDateFormat data = new SimpleDateFormat("dd/MM/yyyy");
+        String dataFormatada = data.format(c.getTime());
 
-        implementaSolucao.upLoadSolucao(user.getUid(), nome, tituloSolucao, palavraChaveSolucao
+
+        implementaSolucao.upLoadSolucao(user.getUid(),dataFormatada, nome, tituloSolucao, palavraChaveSolucao
                 , tipoSolucaoAdapter
                 , descricaoDaSolucao
                 , URLretornoUploadImagem);
@@ -277,6 +285,11 @@ public class CriarNovoCardSolucao_Activity extends AppCompatActivity implements 
         startActivity(new Intent(CriarNovoCardSolucao_Activity.this, MainActivity.class));
         finish();
     }
+
+    //-------------------------
+
+
+
     //-------------------------ABRE ENVIA FOTO FIREBASE-------------------------------
 
     @Override

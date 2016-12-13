@@ -15,6 +15,7 @@ import com.tel.gleisson.android.tel.R;
 import com.tel.gleisson.android.tel.data.AdapterSolucaoEquipamento;
 import com.tel.gleisson.android.tel.data.SolucaoObjeto;
 import com.tel.gleisson.android.tel.data.ViewHolderRecuperaSolucao;
+import com.tel.gleisson.android.tel.util.FirebaseHelper;
 
 /**
  * Created by Gleisson e Rosy on 24/10/2016.
@@ -25,23 +26,28 @@ public class Equipamento_fragment extends Fragment/* implements SearchView.OnQue
 
     private DatabaseReference mDatareferencia;
     private AdapterSolucaoEquipamento adapter;
+  //  private AdpterHolderQuinta adapter;
     private DatabaseReference RefSolucao;
     private static Bundle mBundleRecyclerViewState;
     private RecyclerView recyclerView;
     private final String KEY_RECYCLER_STATE = "recycler_state";
+    private FirebaseHelper firebaseHelper;
 
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
         mDatareferencia = FirebaseDatabase.getInstance().getReference().child("Soluções").child("Equipamento");
+//        firebaseHelper =  new FirebaseHelper(mDatareferencia);
+
          recyclerView = (RecyclerView) inflater.inflate(R.layout.recycler_view, container, false);
-     //   RefSolucao = mDatareferencia.child ("https://apptel-84297.firebaseio.com/").child("Soluções").child("Equipamento");
+      //  RefSolucao = mDatareferencia.child ("https://apptel-84297.firebaseio.com/").child("Soluções").child("Equipamento");
       //  ContentAdapter adapter = new ContentAdapter(recyclerView.getContext());
 
+        adapter = new AdapterSolucaoEquipamento(getContext(),SolucaoObjeto.class,R.layout.solucoes_card, ViewHolderRecuperaSolucao.class, mDatareferencia);
         setHasOptionsMenu(true);
 
-        adapter = new AdapterSolucaoEquipamento(getContext(),SolucaoObjeto.class,R.layout.solucoes_card, ViewHolderRecuperaSolucao.class, mDatareferencia);
+      //    adapter = new AdpterHolderQuinta(getContext(), firebaseHelper.buscaSolucoes());
         recyclerView.setAdapter(adapter);
 
         recyclerView.setHasFixedSize(true);

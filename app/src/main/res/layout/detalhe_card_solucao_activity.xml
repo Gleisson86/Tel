@@ -171,11 +171,11 @@
                     android:id="@+id/dataAutorViewDetalhe"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_below="@+id/textPorAutorViewDetalhe"
-                    android:layout_toRightOf="@+id/personDetalheView"
+                    android:layout_below="@+id/nomeAutorViewDetalhe"
+                    android:layout_toRightOf="@+id/textPorAutorViewDetalhe"
                     android:layout_marginLeft="@dimen/espaco_de_16"
-                    android:layout_marginTop="@dimen/espaco_de_4"
-                    android:text="@string/data"/>
+                    android:layout_marginTop="@dimen/espaco_de_2"
+                    android:textSize="@dimen/texto_de_12sp"/>
 
 
             </RelativeLayout>
